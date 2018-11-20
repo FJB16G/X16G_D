@@ -27,13 +27,22 @@ public class Idea2 extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // webView
         View v = inflater.inflate(R.layout.fragment_idea2, container, false);
         mWebView = (WebView)v.findViewById(R.id.web_view);
         mWebView.setWebViewClient(new WebViewClient());
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("https://trends.google.co.jp/trends/?geo=JP");
-
+        mWebView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+                    mWebView.goBack();
+                    return true;
+                }
+                return false;
+            }
+        });
         return v;
     }
 }

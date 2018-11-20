@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#2ae"
+        android:elevation="16dp"
         android:orientation="horizontal">
 
         <ImageButton
@@ -29,7 +30,7 @@
             android:gravity="center"
             android:text="分類"
             android:textColor="#fff"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -46,11 +47,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eaeaea" />
+        android:background="@drawable/underline" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="#ededed" />
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -41,9 +42,6 @@ public class Idea1 extends Fragment implements View.OnClickListener {
     LinkedHashMap<String,String> lhm = new LinkedHashMap<>();
     EditText idea;
     String pos = "";
-
-
-
 
     public interface RecyclerFragmentListener {
         void onRecyclerEvent();
@@ -88,7 +86,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter(adapter);
         //ドラッグ＆ドロップのやつ
         ItemTouchHelper mIth  = new ItemTouchHelper(
-                new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
+                new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT){
 
                     @Override
                     public boolean onMove(RecyclerView recyclerView,
@@ -103,6 +101,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
+                        adapter.notifyDataSetChanged();
 
                     }
                 });

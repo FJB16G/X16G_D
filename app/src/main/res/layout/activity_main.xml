@@ -1,49 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/ideaBule"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/ideaBule"
+            android:elevation="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center"
+                android:text="アイデア画面"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                app:fontFamily="@font/abhaya_libre_extrabold" />
+
+            <ImageView
+                android:id="@+id/toSubActivity"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:rotation="180"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/underline" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center"
-            android:paddingLeft="30dp"
-            android:text="アイデア"
-            android:textColor="#fff"
-            android:textSize="24sp"
-            app:fontFamily="@font/abhaya_libre_extrabold" />
+            android:background="#ededed">
 
-        <ImageView
-            android:id="@+id/toSubActivity"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:rotation="180"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+        </android.support.v4.view.ViewPager>
+
     </LinearLayout>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eaeaea" />
+        android:layout_margin="10dp"
+        android:clickable="true"
+        app:backgroundTint="#fd0"
+        app:layout_anchor="@+id/viewPager"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@drawable/home" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
