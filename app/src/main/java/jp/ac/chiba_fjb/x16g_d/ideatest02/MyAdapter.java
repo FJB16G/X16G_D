@@ -57,9 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity ma = new MainActivity();
                 if (flg==false){
-
                     //編集可能
                     holder.mButton.setText("完了");
                     holder.mTextView.setEnabled(true);

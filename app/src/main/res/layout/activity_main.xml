@@ -18,15 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="アイデア画面"
+            android:gravity="center_vertical|center"
+            android:paddingLeft="30dp"
+            android:text="アイデア"
             android:textColor="#fff"
             android:textSize="24sp"
             app:fontFamily="@font/abhaya_libre_extrabold" />
 
         <ImageView
-            android:id="@+id/insert"
+            android:id="@+id/toSubActivity"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -35,46 +35,15 @@
             app:srcCompat="?attr/actionModeCloseDrawable" />
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#fff"
-        android:keepScreenOn="false"
-        android:orientation="horizontal">
+        android:background="#eaeaea" />
 
-        <EditText
-            android:id="@+id/ideaText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autoText="false"
-            android:ems="10"
-            android:hint="@string/hint_idea"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:background="@color/ideaBule"
-            android:text="追加"
-            android:textColor="#fff" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView4"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="※編集途中のテキストは保存されません。"
-        android:textColor="#e00" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
