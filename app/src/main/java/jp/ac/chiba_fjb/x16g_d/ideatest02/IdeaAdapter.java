@@ -1,27 +1,21 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.sql.SQLData;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder>{
 
     private List<String> dataArray = new ArrayList<>();
     private int dataId;
     private boolean flg = false;
-    MyAdapter(List<String> dataset) {
+    IdeaAdapter(List<String> dataset) {
         //MainActivityのArrayListを持ってきてる？
         dataArray = dataset;
     }

@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Main2Fragment extends Fragment {
+public class Category1 extends Fragment {
 
 
-    public Main2Fragment() {
+    public Category1() {
         // Required empty public constructor
     }
 
@@ -23,7 +23,7 @@ public class Main2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main2, container, false);
+        return inflater.inflate(R.layout.fragment_category1, container, false);
     }
 
 }

@@ -1,23 +1,24 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Main1Fragment">
+    tools:context=".CategoryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/ideaBule"
+        android:background="#2ae"
+        android:elevation="16dp"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/ideaBule"
+            android:background="#2ae"
             android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="?attr/actionModeCloseDrawable" />
@@ -27,18 +28,31 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="画面"
+            android:text="分類"
             android:textColor="#fff"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageButton
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/ideaBule"
+            android:background="#2ae"
             android:padding="5dp"
+            android:rotation="180"
             android:scaleType="fitCenter"
-            android:src="?attr/actionModeShareDrawable" />
+            android:src="?attr/actionModeCloseDrawable" />
     </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/underline" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ededed" />
 
 </LinearLayout>

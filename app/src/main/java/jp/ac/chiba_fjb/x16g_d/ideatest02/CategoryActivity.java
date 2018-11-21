@@ -7,14 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 
-public class SubActivity extends AppCompatActivity implements View.OnClickListener {
+public class CategoryActivity extends AppCompatActivity implements View.OnClickListener {
     private CharSequence[] tabTitle = {"タブ1", "タブ2"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        setContentView(R.layout.activity_category);
         findViewById(R.id.imageButton).setOnClickListener(this);
         findViewById(R.id.imageButton2).setOnClickListener(this);
 
@@ -26,9 +25,9 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 switch (position)
                 {
                     case 0:
-                        return new Main1Fragment();
+                        return new Category1();
                     case 1:
-                        return new Main2Fragment();
+                        return new Category2();
                     //case 2:
                     //    return new Main1Fragment();
                     default:
