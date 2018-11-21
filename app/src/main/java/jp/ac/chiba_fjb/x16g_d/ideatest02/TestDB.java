@@ -14,7 +14,11 @@ class TestDB extends SQLite
     @Override
     public void onCreate(SQLiteDatabase db) {
         //初期テーブルの作成
-        db.execSQL("create table test(id text primary key,name text);");
+        db.execSQL("create table idea(idea_id text primary key,idea_name text);");
+        db.execSQL("create table user(user_id text primary key,user_name text,pass text);");
+        db.execSQL("create table category(category_id text primary key,category_name text);");
+        db.execSQL("create table grou(grou_id text primary key,grou_name text,date text,user_id text);");
+        db.execSQL("create table idea_log(grou_id text,user_id text,category_id,idea_id text)");
     }
 
     @Override
