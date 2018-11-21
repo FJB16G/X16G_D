@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class CategoryActivity extends AppCompatActivity implements View.OnClickListener {
-    private CharSequence[] tabTitle = {"タブ1", "タブ2"};
+    private CharSequence[] tabTitle = {"分類作成", "分類分け"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
