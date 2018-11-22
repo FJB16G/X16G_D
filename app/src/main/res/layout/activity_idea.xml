@@ -30,7 +30,7 @@
                 app:fontFamily="@font/abhaya_libre_extrabold" />
 
             <ImageView
-                android:id="@+id/toSubActivity"
+                android:id="@+id/toCategory"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

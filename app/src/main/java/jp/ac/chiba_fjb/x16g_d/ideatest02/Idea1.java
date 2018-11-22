@@ -103,7 +103,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
 
                     }
                 });
-        getActivity().findViewById(R.id.toSubActivity).setOnClickListener(this);
+        getActivity().findViewById(R.id.toCategory).setOnClickListener(this);
         getActivity().findViewById(R.id.add).setOnClickListener(this);
         mIth .attachToRecyclerView(recyclerView);
         //カーソルを閉じる
@@ -138,7 +138,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into test values('" + c + "','%s');",SQLite.STR(tuika)));
             }
-        }if(view.getId()==R.id.toSubActivity){
+        }if(view.getId()==R.id.toCategory){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update test set name = '" + dataset.get(i) + "' where id = '" + datakey.get(i) + "';");
             }
