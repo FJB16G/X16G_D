@@ -14,8 +14,8 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        findViewById(R.id.toIdea).setOnClickListener(this);
-        findViewById(R.id.toCategorySelect).setOnClickListener(this);
+        findViewById(R.id.imageButton).setOnClickListener(this);
+        findViewById(R.id.imageButton2).setOnClickListener(this);
 
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager())
         {
@@ -54,12 +54,11 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        if (view.getId()==R.id.toIdea){
+        if (view.getId()==R.id.imageButton){
             finish();
-        }else if (view.getId()==R.id.toCategorySelect){
+        }else if (view.getId()==R.id.imageButton2){
 
         }
     }
-
 }
 
