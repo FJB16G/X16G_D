@@ -67,8 +67,10 @@ public class Idea1 extends Fragment implements View.OnClickListener {
 
         final TestDB db = new TestDB(getActivity());
         dataset = new ArrayList<>();
+
+        //グループのIDに絡めてアイデアを呼ぶようにする
         //クエリーの発行
-        Cursor res = db.query("select * from test;");
+        Cursor res = db.query("select * from idea;");
         //データがなくなるまで次の行へ
         while(res.moveToNext())
         {
@@ -95,12 +97,13 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                     @Override
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                         int fromPos = viewHolder.getAdapterPosition();
-                        db.exec(String.format("delete from test where id = '%s';",SQLite.STR(datakey.get(fromPos))));
+
+                        //アイデアログからもアイデアを削除する必要がある
+                        db.exec(String.format("delete from idea where idea_id = '%s';",SQLite.STR(datakey.get(fromPos))));
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
                         adapter.notifyDataSetChanged();
-
                     }
                 });
         getActivity().findViewById(R.id.toCategory).setOnClickListener(this);
@@ -136,11 +139,11 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                 dataset.add(tuika);
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
-                db.exec(String.format("insert into test values('" + c + "','%s');",SQLite.STR(tuika)));
+                db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
             }
         }if(view.getId()==R.id.toCategory){
             for(int i = 0; i<datakey.size();i++){
-                db.exec("update test set name = '" + dataset.get(i) + "' where id = '" + datakey.get(i) + "';");
+                db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
             }
             Intent intent = new Intent(getActivity(), CategoryActivity.class);
             startActivity(intent);
