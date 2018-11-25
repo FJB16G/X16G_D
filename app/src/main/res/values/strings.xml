@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ideaFactory</string>
     <string name="hint_idea">アイデア入力</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_invalid_user">ユーザIDは6文字以上で入力してください。</string>
+    <string name="error_invalid_password">パスワードは6文字以上で入力してください。</string>
+    <string name="error_incorrect_userID">このユーザIDは使用されています。</string>
+    <string name="error_field_required">この項目は必須です</string>
 </resources>
