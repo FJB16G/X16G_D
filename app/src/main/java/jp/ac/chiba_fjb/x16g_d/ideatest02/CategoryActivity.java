@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 
 public class CategoryActivity extends AppCompatActivity{
-    private CharSequence[] tabTitle = {"カテゴリ入力", "カテゴリ分け"};
+    private CharSequence[] tabTitle = {"カテゴリ入力", "カテゴリわけ"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
