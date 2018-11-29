@@ -18,6 +18,16 @@
             android:elevation="16dp"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/toIdeaActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:padding="5dp"
+                android:rotation="0"
+
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
@@ -31,9 +41,9 @@
 
             <ImageView
                 android:id="@+id/toNextActivity"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:padding="5dp"
                 android:rotation="180"
 
