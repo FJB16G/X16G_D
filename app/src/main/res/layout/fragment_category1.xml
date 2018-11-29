@@ -19,7 +19,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/ideaText"
+            android:id="@+id/categoryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

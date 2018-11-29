@@ -39,7 +39,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerView = null;
 
     LinkedHashMap<String, String> lhm = new LinkedHashMap<>();
-    EditText idea;
+    EditText category;
     String pos = "";
 
     public interface RecyclerFragmentListener {
@@ -73,7 +73,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
 
         //グループのIDに絡めてアイデアを呼ぶようにする
         //クエリーの発行
-        Cursor res = db.query("select * from idea;");
+        Cursor res = db.query("select * from category;");
         //データがなくなるまで次の行へ
         while (res.moveToNext()) {
             //0列目を取り出し
@@ -101,7 +101,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
                         int fromPos = viewHolder.getAdapterPosition();
 
                         //アイデアログからもアイデアを削除する必要がある
-                        db.exec(String.format("delete from idea where idea_id = '%s';", SQLite.STR(datakey.get(fromPos))));
+                        db.exec(String.format("delete from category where category_id = '%s';", SQLite.STR(datakey.get(fromPos))));
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
@@ -120,8 +120,8 @@ public class Category1 extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         TestDB db = new TestDB(getActivity());
         if (view.getId()==R.id.add) {
-            idea = (EditText)mView.findViewById(R.id.ideaText);
-            String tuika = idea.getText().toString();
+            category = (EditText)mView.findViewById(R.id.categoryText);
+            String tuika = category.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
                 int b = dataset.size()-1;
@@ -142,11 +142,11 @@ public class Category1 extends Fragment implements View.OnClickListener {
                 dataset.add(tuika);
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
-                db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
+                db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
             }
         }if(view.getId()==R.id.toNextActivity){
             for(int i = 0; i<datakey.size();i++){
-                db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
+                db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
 //            Intent intent = new Intent(getActivity(), NextActivity.class);
 //            startActivity(intent);
