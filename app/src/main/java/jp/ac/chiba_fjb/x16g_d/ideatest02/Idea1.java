@@ -121,7 +121,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
             String tuika = idea.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
-                int b = dataset.size()-1;
+                int b = dataset.size();
                 String c = "";
                 if(b<9){
                     c="000000"+b;
@@ -136,6 +136,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                 }else if(b<999999){
                     c="0"+b;
                 }
+                c = "i" + c;
                 dataset.add(tuika);
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
