@@ -75,6 +75,8 @@ public class Category1 extends Fragment implements View.OnClickListener {
         //クエリーの発行
         Cursor res = db.query("select * from category;");
         //データがなくなるまで次の行へ
+        //未分類は消されないように最初の行ははぶく
+        res.moveToNext();
         while (res.moveToNext()) {
             //0列目を取り出し
             lhm.put(res.getString(0), res.getString(1));
@@ -102,7 +104,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
 
                         //アイデアログからもアイデアを削除する必要がある
                         db.exec(String.format("delete from category where category_id = '%s';", SQLite.STR(datakey.get(fromPos))));
-                        db.exec(String.format("delete from category_log where category_id = '%s';",SQLite.STR(datakey.get(fromPos))));
+                        db.exec("update idea_log set category_id = 'c0000000' where category_id = '" + datakey.get(fromPos) + "'");
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
@@ -125,19 +127,19 @@ public class Category1 extends Fragment implements View.OnClickListener {
             String tuika = category.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
-                int b = dataset.size();
+                int b = dataset.size()+1;
                 String c = "";
-                if(b<9){
+                if(b<=9){
                     c="000000"+b;
-                }else if(b<99){
+                }else if(b<=99){
                     c="00000"+b;
-                }else if(b<999){
+                }else if(b<=999){
                     c="0000"+b;
-                }else if(b<9999){
+                }else if(b<=9999){
                     c="000"+b;
-                }else if(b<99999){
+                }else if(b<=99999){
                     c="00"+b;
-                }else if(b<999999){
+                }else if(b<=999999){
                     c="0"+b;
                 }
                 c = "c" + c;
@@ -145,7 +147,6 @@ public class Category1 extends Fragment implements View.OnClickListener {
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
-                db.exec(String.format("insert into category_log values('" + c + "','%s');",SQLite.STR(tuika)));
             }
 //        }if(view.getId()==R.id.toNextActivity){
 //            for(int i = 0; i<datakey.size();i++){
