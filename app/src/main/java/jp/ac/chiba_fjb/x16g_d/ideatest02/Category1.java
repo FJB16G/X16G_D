@@ -102,6 +102,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
 
                         //アイデアログからもアイデアを削除する必要がある
                         db.exec(String.format("delete from category where category_id = '%s';", SQLite.STR(datakey.get(fromPos))));
+                        db.exec(String.format("delete from category_log where category_id = '%s';",SQLite.STR(datakey.get(fromPos))));
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
@@ -144,6 +145,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
+                db.exec(String.format("insert into category_log values('" + c + "','%s');",SQLite.STR(tuika)));
             }
 //        }if(view.getId()==R.id.toNextActivity){
 //            for(int i = 0; i<datakey.size();i++){
