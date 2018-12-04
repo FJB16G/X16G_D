@@ -44,6 +44,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
     public interface RecyclerFragmentListener {
         void onRecyclerEvent();
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
