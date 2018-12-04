@@ -17,6 +17,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.toIdea).setOnClickListener(this);
         findViewById(R.id.toCategorySelect).setOnClickListener(this);
 
+
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager())
         {
             @Override
@@ -59,6 +60,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         }else if (view.getId()==R.id.toCategorySelect){
 
         }
+
     }
 }
 
