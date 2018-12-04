@@ -124,17 +124,17 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                 //IDの生成
                 int b = dataset.size();
                 String c = "";
-                if(b<9){
+                if(b<=9){
                     c="000000"+b;
-                }else if(b<99){
+                }else if(b<=99){
                     c="00000"+b;
-                }else if(b<999){
+                }else if(b<=999){
                     c="0000"+b;
-                }else if(b<9999){
+                }else if(b<=9999){
                     c="000"+b;
-                }else if(b<99999){
+                }else if(b<=99999){
                     c="00"+b;
-                }else if(b<999999){
+                }else if(b<=999999){
                     c="0"+b;
                 }
                 c = "i" + c;
@@ -142,7 +142,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
-                db.exec(String.format("insert into idea_log values('" + c + "','%s');",SQLite.STR(tuika)));
+                db.exec("insert into idea_log values('','user','c0000000','" + c + "');");
             }
         }if(view.getId()==R.id.toCategoryActivity){
             for(int i = 0; i<datakey.size();i++){

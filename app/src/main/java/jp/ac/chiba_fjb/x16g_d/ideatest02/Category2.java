@@ -19,7 +19,8 @@ import java.util.List;
 public class Category2 extends Fragment {
 
 private List<String> list;
-private TextView textView;
+private TextView idea;
+private TextView cateogry;
     public Category2() {
         // Required empty public constructor
     }
@@ -28,7 +29,6 @@ private TextView textView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        textView = container.findViewById(R.id.log);
         return inflater.inflate(R.layout.fragment_category2, container, false);
     }
     @Override
@@ -37,13 +37,15 @@ private TextView textView;
         final TestDB db = new TestDB(getActivity());
         Cursor res = db.query("select idea_id,category_id from idea_log;");
         list = new ArrayList<>();
+        idea = getActivity().findViewById(R.id.idea_id);
+        cateogry = getActivity().findViewById(R.id.category_id);
+        idea.append("アイデアID\n");
+        cateogry.append("カテゴリID\n");
         while (res.moveToNext()){
             //奇数カテゴリ、偶数アイディア
-            list.add(res.getString(0));
-            list.add(res.getString(1));
+            idea.append(res.getString(0) + "\n");
+            cateogry.append(res.getString(1) + "\n");
         }
-        for (String a:list){
-            textView.setText(a);
-        }
+        res.close();
     }
 }
