@@ -18,8 +18,10 @@ class TestDB extends SQLite
         db.execSQL("create table user(user_id text primary key,user_name text,pass text);");
         db.execSQL("create table category(category_id text primary key,category_name text);");
         db.execSQL("create table grou(grou_id text primary key,grou_name text,date text,user_id text);");
-        db.execSQL("create table idea_log(grou_id text,user_id text,category_id,idea_id text)");
-        db.execSQL("insert into category values('c0000000','未分類')");
+        db.execSQL("create table idea_log(grou_id text,user_id text,category_id,idea_id text);");
+        db.execSQL("insert into category values('c0000000','未分類');");
+        db.execSQL("insert into grou values('g0000000','テストグループ','2018年12月5日','');");
+        db.execSQL("insert into grou values('g0000001','テストグループ','2018年12月5日','');");
     }
 
     @Override

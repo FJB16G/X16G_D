@@ -28,18 +28,16 @@ public class Idea1 extends Fragment implements View.OnClickListener {
     private RecyclerView.Adapter adapter;
     private List<String> dataset;
     private List<String> datakey;
-    private int dataid;
-    private ImageButton mbutton;
     private Activity mActivity = null;
     private View mView;
     private RecyclerFragmentListener mFragmentListener = null;
+    private String grou_id;
 
     // RecyclerViewとAdapter
     private RecyclerView recyclerView = null;
 
     LinkedHashMap<String,String> lhm = new LinkedHashMap<>();
     EditText idea;
-    String pos = "";
 
     public interface RecyclerFragmentListener {
         void onRecyclerEvent();
@@ -68,9 +66,9 @@ public class Idea1 extends Fragment implements View.OnClickListener {
 
         final TestDB db = new TestDB(getActivity());
 
-        //グループのIDに絡めてアイデアを呼ぶようにする
-        //クエリーの発行
-        Cursor res = db.query("select * from idea;");
+        Grou_id gi = new Grou_id();
+        grou_id = gi.getGrou_id();
+        Cursor res = db.query("select grou.grou_id,idea_log.idea_id from grou left outer join idea_log on grou.grou_id = idea_log.grou_id where idea_log.grou_id = '" + grou_id + "';");
         //データがなくなるまで次の行へ
         while(res.moveToNext())
         {
@@ -121,7 +119,8 @@ public class Idea1 extends Fragment implements View.OnClickListener {
             String tuika = idea.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
-                int b = dataset.size();
+                String id = datakey.get(datakey.size()-1);
+                int b = Integer.parseInt(id.substring(1)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;
@@ -141,7 +140,7 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
-                db.exec("insert into idea_log values('','user','c0000000','" + c + "');");
+                db.exec("insert into idea_log values('" + grou_id + "','user','c0000000','" + c + "');");
             }
         }if(view.getId()==R.id.toCategoryActivity){
             for(int i = 0; i<datakey.size();i++){

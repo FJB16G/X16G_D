@@ -127,7 +127,8 @@ public class Category1 extends Fragment implements View.OnClickListener {
             String tuika = category.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
-                int b = dataset.size()+1;
+                String id = datakey.get(datakey.size()-1);
+                int b = Integer.parseInt(id.substring(1)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;

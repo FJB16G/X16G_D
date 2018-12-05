@@ -5,6 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeActivity extends AppCompatActivity
@@ -15,8 +21,8 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         changeFragment(TitleFragment.class);
-
     }
+
     public void changeFragment(Class c){
         changeFragment(c,null);
     }
@@ -27,7 +33,6 @@ public class HomeActivity extends AppCompatActivity
                 f.setArguments(budle);
             else
                 f.setArguments(new Bundle());
-
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fragment,f);
             ft.addToBackStack(null);
