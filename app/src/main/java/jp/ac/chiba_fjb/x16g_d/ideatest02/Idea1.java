@@ -67,7 +67,6 @@ public class Idea1 extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
 
         final TestDB db = new TestDB(getActivity());
-        dataset = new ArrayList<>();
 
         //グループのIDに絡めてアイデアを呼ぶようにする
         //クエリーの発行
@@ -113,7 +112,6 @@ public class Idea1 extends Fragment implements View.OnClickListener {
         mIth .attachToRecyclerView(recyclerView);
         //カーソルを閉じる
         res.close();
-        //DBを閉じる
     }
     @Override
     public void onClick(View view) {

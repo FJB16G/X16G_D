@@ -6,7 +6,7 @@
     android:paddingBottom="2dp">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/grou_name"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="#fff"
