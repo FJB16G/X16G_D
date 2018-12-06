@@ -13,7 +13,6 @@ import java.util.List;
 public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder>{
 
     private List<String> dataArray = new ArrayList<>();
-    private int dataId;
     private boolean flg = false;
     IdeaAdapter(List<String> dataset) {
         //MainActivityのArrayListを持ってきてる？

@@ -15,6 +15,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
 {
+    private TitleAdapter.onItemClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

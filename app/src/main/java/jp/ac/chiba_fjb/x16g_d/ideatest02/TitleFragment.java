@@ -13,21 +13,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-class Grou_id{
-    String grou_id;
-
-    public void setGrou_id(String grou_id_position) {
-        this.grou_id = grou_id_position;
-    }
-
-    public String getGrou_id() {
-        return grou_id;
-    }
-}
 
 public class TitleFragment extends Fragment implements View.OnClickListener {
     private View topimageButton;
@@ -94,6 +83,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
                         db.exec(String.format("delete from idea_log where grou_id = '%s';",SQLite.STR(datakey.get(fromPos))));
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
+                        CreatedDay.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
                         adapter.notifyDataSetChanged();
                     }

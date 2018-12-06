@@ -27,19 +27,9 @@ public class PlanFragment extends Fragment implements View.OnClickListener {
         createbutton = view.findViewById(R.id.createbutton);
         createbutton.setOnClickListener(this);
 
-
-        //((MainActivity)getActivity()).changeFragment(Main2Fragment.class);
     }
-
-
-
-
     @Override
     public void onClick(View view) {
         ((HomeActivity)getActivity()).changeFragment(TitleFragment.class);
-
     }
-
-
-
 }

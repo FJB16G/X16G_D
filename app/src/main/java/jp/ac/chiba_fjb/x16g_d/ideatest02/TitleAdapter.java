@@ -18,6 +18,8 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
     private List<String> datakey = new ArrayList<>();
     private List<String> day = new ArrayList<>();
     private Context con;
+    private onItemClickListener listener;
+    private String id;
 
     public TitleAdapter(Context context,List<String> dataset,List<String> day,List<String> datakey) {
         //MainActivityのArrayListを持ってきてる？
@@ -26,7 +28,9 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         this.datakey = datakey;
         this.dataArray = dataset;
     }
-
+    public TitleAdapter(List<String> datakey){
+        this.datakey = datakey;
+    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //繰り返すレイアウト
@@ -42,11 +46,16 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Grou_id gi = new Grou_id();
-                gi.setGrou_id(datakey.get(position));
-                con.startActivity(new Intent(con, IdeaActivity.class));
+                    Intent intent = new Intent(con,IdeaActivity.class).putExtra("id", datakey.get(position));
+                    con.startActivity(intent);
             }
         });
+    }
+    public interface onItemClickListener{
+        void onClick(String id);
+    }
+    public void setOnItemClickListener(onItemClickListener listener){
+        this.listener = listener;
     }
     @Override
     public int getItemCount() {
@@ -56,10 +65,9 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         Button mButton;
         TextView mTextView;
 
-        //繰り返すxmlの中身
         ViewHolder(View v) {
             super(v);
-            //どこのボタンかを[v]で受け取ってるっぽい
+
             mButton = (Button)v.findViewById(R.id.grou_name);
             mTextView = (TextView)v.findViewById(R.id.day);
         }

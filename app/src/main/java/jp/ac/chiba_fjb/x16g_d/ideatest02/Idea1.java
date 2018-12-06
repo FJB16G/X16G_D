@@ -24,7 +24,8 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Idea1 extends Fragment implements View.OnClickListener {
+public class Idea1 extends Fragment implements View.OnClickListener{
+
     private RecyclerView.Adapter adapter;
     private List<String> dataset;
     private List<String> datakey;
@@ -36,7 +37,6 @@ public class Idea1 extends Fragment implements View.OnClickListener {
     // RecyclerViewとAdapter
     private RecyclerView recyclerView = null;
 
-    LinkedHashMap<String,String> lhm = new LinkedHashMap<>();
     EditText idea;
 
     public interface RecyclerFragmentListener {
@@ -65,18 +65,18 @@ public class Idea1 extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
 
         final TestDB db = new TestDB(getActivity());
-
-        Grou_id gi = new Grou_id();
-        grou_id = gi.getGrou_id();
-        Cursor res = db.query("select grou.grou_id,idea_log.idea_id from grou left outer join idea_log on grou.grou_id = idea_log.grou_id where idea_log.grou_id = '" + grou_id + "';");
+        dataset = new ArrayList<>();
+        datakey = new ArrayList<>();
+        Intent intent = getActivity().getIntent();
+        grou_id = intent.getStringExtra("id");
+        Cursor res = db.query("select idea_log.idea_id,idea.idea_name from grou left outer join idea_log on grou.grou_id = idea_log.grou_id left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
         //データがなくなるまで次の行へ
         while(res.moveToNext())
         {
             //0列目を取り出し
-            lhm.put(res.getString(0),res.getString(1));
+            datakey.add(res.getString(0));
+            dataset.add(res.getString(1));
         }
-        dataset = new ArrayList<>(lhm.values());
-        datakey = new ArrayList<>(lhm.keySet());
 
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
@@ -119,8 +119,14 @@ public class Idea1 extends Fragment implements View.OnClickListener {
             String tuika = idea.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
-                String id = datakey.get(datakey.size()-1);
-                int b = Integer.parseInt(id.substring(1)) + 1;
+                int size = datakey.size()-1;
+                String id;
+                if (size>=0){
+                    id = datakey.get(size);
+                }else {
+                    id = grou_id + "i0000000";
+                }
+                int b = Integer.parseInt(id.substring(9)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;
@@ -136,11 +142,13 @@ public class Idea1 extends Fragment implements View.OnClickListener {
                     c="0"+b;
                 }
                 c = "i" + c;
+                c = grou_id + c;
                 dataset.add(tuika);
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
                 db.exec("insert into idea_log values('" + grou_id + "','user','c0000000','" + c + "');");
+
             }
         }if(view.getId()==R.id.toCategoryActivity){
             for(int i = 0; i<datakey.size();i++){
