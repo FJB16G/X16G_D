@@ -38,7 +38,12 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".CreatedActivity" />
+<<<<<<< HEAD
+        <activity android:name=".ConclusionActivity" />
+        <activity android:name=".AllActivity"></activity>
+=======
         <activity android:name=".HomeActivity"></activity>
+>>>>>>> 0edecc2e2ae4e42e1a1237deae156417975f3be3
     </application>
 
 </manifest>
