@@ -20,7 +20,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         if (v.getId()==R.id.cancel){
             finish();
         }if (v.getId()==R.id.email_sign_in_button){
-            Intent intent = new Intent(this, IdeaActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             //今までのactivityを消す
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

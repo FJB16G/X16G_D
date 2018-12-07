@@ -133,10 +133,6 @@ public class Category2 extends Fragment implements View.OnClickListener {
 
     }
 
-
-
-
-
     @Override
     public void onClick(View view) {
 

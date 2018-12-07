@@ -29,8 +29,6 @@ public class Category1 extends Fragment implements View.OnClickListener {
     private RecyclerView.Adapter adapter;
     private List<String> dataset;
     private List<String> datakey;
-    private int dataid;
-    private ImageButton mbutton;
     private Activity mActivity = null;
     private View mView;
     private RecyclerFragmentListener mFragmentListener = null;
@@ -128,7 +126,14 @@ public class Category1 extends Fragment implements View.OnClickListener {
             String tuika = category.getText().toString();
             if (!tuika.equals("")) {
                 //IDの生成
-                int b = dataset.size()+1;
+                int size = datakey.size()-1;
+                String id;
+                if (size>=0){
+                    id = datakey.get(size);
+                }else {
+                    id = "c0000000";
+                }
+                int b = Integer.parseInt(id.substring(1)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;
