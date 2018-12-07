@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -28,21 +29,28 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Category2 extends Fragment implements View.OnClickListener {
+public class Category2 extends Fragment implements View.OnClickListener{
     private RecyclerView.Adapter Adapter;
+    private RecyclerView.Adapter Adapter2;
     private List<String> dataset;
     private List<String> datakey;
+    private List<String> dataset2;
+    private List<String> datakey2;
     private List<String> SpinnerArray;
     private Activity Activity = null;
     private View mView;
     private View sView;
+    private Button button;
     Spinner mSpinner;
     private RecyclerFragmentListener mFragmentListener = null;
 
     // RecyclerViewとAdapter
     private RecyclerView recyclerView = null;
 
+
+
     LinkedHashMap<String,String> lhm = new LinkedHashMap<>();
+    LinkedHashMap<String,String> lhm2 = new LinkedHashMap<>();
 
 
     public interface RecyclerFragmentListener {
@@ -82,6 +90,8 @@ public class Category2 extends Fragment implements View.OnClickListener {
         dataset = new ArrayList<>();
 
 
+
+
         //クエリーの発行
         Cursor res = db.query("select * from idea;");
         //データがなくなるまで次の行へ
@@ -93,42 +103,29 @@ public class Category2 extends Fragment implements View.OnClickListener {
         dataset = new ArrayList<>(lhm.values());
         datakey = new ArrayList<>(lhm.keySet());
 
+        //クエリーの発行
+        Cursor res2 = db.query("select * from category;");
+        //データがなくなるまで次の行へ
+        while(res2.moveToNext())
+        {
+            //0列目を取り出し
+            lhm2.put(res2.getString(0),res2.getString(1));
+        }
+        dataset2 = new ArrayList<>(lhm2.values());
+        datakey2 = new ArrayList<>(lhm2.keySet());
+
+
+
+
+
+
 
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
-        Adapter = new Category2Adapter(dataset);
+        Adapter = new Category2Adapter(dataset,dataset2);
+
         recyclerView.setAdapter(Adapter);
 
-
-
-
-        // Spinerにアダプターを設定
-        mSpinner = sView.findViewById(R.id.spinner);
-        // アダプターを設定します（作成たメソッド呼び出すように修正しています。）
-        mSpinner.setAdapter(setAdapterContents());
-
-
-
-    }
-
-    private ArrayAdapter<String> setAdapterContents(){
-        // とりあえず、adapterの中身はなしでインスタンスを生成
-        ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item);
-//        // 自分でspinnerの中身の配列を定義しています。
-//        SpinnerArray = new ArrayList<>();
-//        SpinnerArray.add("aaaa");
-//        SpinnerArray.add("bbbb");
-//        SpinnerArray.add("cccc");
-//
-//        // adapterに中身をセット
-//        for(String targetStr : SpinnerArray) {
-//            adapter.add(targetStr);
-//        }
-
-
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        return adapter;
 
 
     }
@@ -138,7 +135,9 @@ public class Category2 extends Fragment implements View.OnClickListener {
 
 
     @Override
-    public void onClick(View view) {
+    public void onClick( View view ) {
+
+
 
     }
 
