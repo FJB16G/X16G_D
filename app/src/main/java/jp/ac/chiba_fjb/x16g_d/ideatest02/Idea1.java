@@ -69,7 +69,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
         datakey = new ArrayList<>();
         Intent intent = getActivity().getIntent();
         grou_id = intent.getStringExtra("id");
-        Cursor res = db.query("select idea_log.idea_id,idea.idea_name from grou left outer join idea_log on grou.grou_id = idea_log.grou_id left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
+        Cursor res = db.query("select idea_log.idea_id,idea.idea_name from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
         //データがなくなるまで次の行へ
         while(res.moveToNext())
         {
@@ -126,7 +126,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                 }else {
                     id = grou_id + "i0000000";
                 }
-                int b = Integer.parseInt(id.substring(9)) + 1;
+                int b = Integer.parseInt(id.substring(11)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;

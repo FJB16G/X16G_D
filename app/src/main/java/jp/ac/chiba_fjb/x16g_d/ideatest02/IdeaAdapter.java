@@ -25,15 +25,12 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder>{
         //繰り返すxmlの中身
         ViewHolder(View v) {
             super(v);
-
             mTextView = (EditText) v.findViewById(R.id.idea);
-
             //編集不可
             mTextView.setEnabled(false);
             //どこのボタンかを[v]で受け取ってるっぽい
             mButton = (Button)v.findViewById(R.id.change);
         }
-
     }
 
     @Override

@@ -32,6 +32,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
     private Activity mActivity = null;
     private View mView;
     private RecyclerFragmentListener mFragmentListener = null;
+    private String grou_id;
 
     // RecyclerViewとAdapter
     private RecyclerView recyclerView = null;
@@ -67,20 +68,23 @@ public class Category1 extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
 
         final TestDB db = new TestDB(getActivity());
-        dataset = new ArrayList<>();
-
+        Intent intent = getActivity().getIntent();
+        grou_id = intent.getStringExtra("id");
         //グループのIDに絡めてアイデアを呼ぶようにする
         //クエリーの発行
-        Cursor res = db.query("select * from category;");
+        Cursor res = db.query("select category.category_id,category.category_name idea_log.grou_id from idea_log left outer join category on idea_log.category_id = category.category_id where grou_id = '" + grou_id + "';");
         //データがなくなるまで次の行へ
         //未分類は消されないように最初の行ははぶく
+
+        dataset = new ArrayList<>();
+        datakey = new ArrayList<>();
+
         res.moveToNext();
         while (res.moveToNext()) {
             //0列目を取り出し
-            lhm.put(res.getString(0), res.getString(1));
+            datakey.add(res.getString(0));
+            dataset.add(res.getString(1));
         }
-        dataset = new ArrayList<>(lhm.values());
-        datakey = new ArrayList<>(lhm.keySet());
 
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
@@ -126,13 +130,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
             if (!tuika.equals("")) {
                 //IDの生成
                 int size = datakey.size()-1;
-                String id;
-                if (size>=0){
-                    id = datakey.get(size);
-                }else {
-                    id = "c0000000";
-                }
-                int b = Integer.parseInt(id.substring(1)) + 1;
+                int b = Integer.parseInt(datakey.get(size).substring(1)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;
@@ -152,6 +150,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
+                db.exec(String.format("update idea_log set category_id = '%s' where grou_id = '" + grou_id + "'",SQLite.STR(tuika)));
             }
 //        }if(view.getId()==R.id.toNextActivity){
 //            for(int i = 0; i<datakey.size();i++){

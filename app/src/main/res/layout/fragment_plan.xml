@@ -38,44 +38,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="200dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="#fff"
+            android:orientation="vertical"
+            android:padding="50dp">
 
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/nptitle"
+                    android:id="@+id/groupname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:ems="10"
-                    android:hint="グループ名入力"
+                    android:hint="グループ名"
                     android:inputType="textPersonName" />
+            </android.support.design.widget.TextInputLayout>
 
-                <Button
-                    android:id="@+id/createbutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="60dp"
-                    android:background="#2ae"
-                    android:gravity="center"
-                    android:text="作成"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/createbutton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:background="#2ae"
+                android:gravity="center"
+                android:text="作成"
+                android:textColor="#fff" />
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
