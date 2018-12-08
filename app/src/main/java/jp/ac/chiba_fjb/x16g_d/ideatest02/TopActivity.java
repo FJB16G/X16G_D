@@ -12,17 +12,12 @@ public class TopActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
         findViewById(R.id.button).setOnClickListener(this);
-        findViewById(R.id.button2).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.button){
-            Intent intent = new Intent(getApplication(), SignUpActivity.class);
-            startActivity(intent);
-        }else if (v.getId()==R.id.button2){
-            Intent intent = new Intent(getApplication(), SignInActivity.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

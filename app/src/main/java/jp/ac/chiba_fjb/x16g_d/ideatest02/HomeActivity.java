@@ -15,13 +15,11 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
 {
-    private TitleAdapter.onItemClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        changeFragment(TitleFragment.class);
     }
 
     public void changeFragment(Class c){

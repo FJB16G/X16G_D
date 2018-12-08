@@ -7,10 +7,9 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <FrameLayout
+    <fragment
         android:id="@+id/fragment"
+        android:name="jp.ac.chiba_fjb.x16g_d.ideatest02.TitleFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>
