@@ -24,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical|center"
+                android:paddingLeft="30dp"
                 android:text="アイデア画面"
                 android:textColor="#fff"
                 android:textSize="20sp"
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:clickable="true"
-        app:backgroundTint="#fd0"
+        app:backgroundTint="@color/ideaBule"
         app:layout_anchor="@+id/viewPager"
         app:layout_anchorGravity="right|bottom"
         app:srcCompat="@drawable/home" />

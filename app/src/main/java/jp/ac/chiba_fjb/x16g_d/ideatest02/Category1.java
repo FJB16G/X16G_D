@@ -70,16 +70,11 @@ public class Category1 extends Fragment implements View.OnClickListener {
         final TestDB db = new TestDB(getActivity());
         Intent intent = getActivity().getIntent();
         grou_id = intent.getStringExtra("id");
-        //グループのIDに絡めてアイデアを呼ぶようにする
-        //クエリーの発行
-        Cursor res = db.query("select category.category_id,category.category_name idea_log.grou_id from idea_log left outer join category on idea_log.category_id = category.category_id where grou_id = '" + grou_id + "';");
-        //データがなくなるまで次の行へ
-        //未分類は消されないように最初の行ははぶく
+        Cursor res = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "';");
 
         dataset = new ArrayList<>();
         datakey = new ArrayList<>();
 
-        res.moveToNext();
         while (res.moveToNext()) {
             //0列目を取り出し
             datakey.add(res.getString(0));
@@ -104,10 +99,9 @@ public class Category1 extends Fragment implements View.OnClickListener {
                     @Override
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                         int fromPos = viewHolder.getAdapterPosition();
-
-                        //アイデアログからもアイデアを削除する必要がある
                         db.exec(String.format("delete from category where category_id = '%s';", SQLite.STR(datakey.get(fromPos))));
-                        db.exec("update idea_log set category_id = 'c0000000' where category_id = '" + datakey.get(fromPos) + "'");
+                        //カテゴリーが消されると、そこに入っていたアイデアは未分類にカテゴライズする
+                        db.exec("update idea_log set category_id = 'g000000000c0000000' where category_id = '" + datakey.get(fromPos) + "'");
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);
@@ -119,7 +113,6 @@ public class Category1 extends Fragment implements View.OnClickListener {
         mIth.attachToRecyclerView(recyclerView);
         //カーソルを閉じる
         res.close();
-        //DBを閉じる
     }
 
     @Override
@@ -128,10 +121,16 @@ public class Category1 extends Fragment implements View.OnClickListener {
         if (view.getId()==R.id.add) {
             category = (EditText)mView.findViewById(R.id.categoryText);
             String tuika = category.getText().toString();
+            String id;
             if (!tuika.equals("")) {
                 //IDの生成
                 int size = datakey.size()-1;
-                int b = Integer.parseInt(datakey.get(size).substring(1)) + 1;
+                if (size>=0){
+                    id = datakey.get(size);
+                }else {
+                    id = grou_id + "c0000000";
+                }
+                int b = Integer.parseInt(id.substring(11)) + 1;
                 String c = "";
                 if(b<=9){
                     c="000000"+b;
@@ -147,11 +146,13 @@ public class Category1 extends Fragment implements View.OnClickListener {
                     c="0"+b;
                 }
                 c = "c" + c;
+
+                //カテゴリIDの頭にグループIDが付与されることによってグループごとにカテゴリを管理
+                c = grou_id + c;
                 dataset.add(tuika);
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
-                db.exec(String.format("update idea_log set category_id = '%s' where grou_id = '" + grou_id + "'",SQLite.STR(tuika)));
             }
 //        }if(view.getId()==R.id.toNextActivity){
 //            for(int i = 0; i<datakey.size();i++){
@@ -160,12 +161,11 @@ public class Category1 extends Fragment implements View.OnClickListener {
 //            Intent intent = new Intent(getActivity(), NextActivity.class);
 //            startActivity(intent);
 //        }
-
         }if(view.getId()==R.id.toIdeaActivity){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), IdeaActivity.class);
+            Intent intent = new Intent(getActivity(), IdeaActivity.class).putExtra("id",grou_id);
             startActivity(intent);
         }
     }

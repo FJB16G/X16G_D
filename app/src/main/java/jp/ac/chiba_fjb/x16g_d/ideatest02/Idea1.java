@@ -142,19 +142,22 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                     c="0"+b;
                 }
                 c = "i" + c;
+
+                //グループIDをアイデアIDの頭に付与することによってグループごとにIDを管理する
                 c = grou_id + c;
                 dataset.add(tuika);
                 datakey.add(c);
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
-                db.exec("insert into idea_log values('" + grou_id + "','user','c0000000','" + c + "');");
+                //アイデアは必ずどこかのカテゴリにカテゴライズされている
+                db.exec("insert into idea_log values('" + grou_id + "','user','g000000000c0000000','" + c + "');");
 
             }
         }if(view.getId()==R.id.toCategoryActivity){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), CategoryActivity.class);
+            Intent intent = new Intent(getActivity(), CategoryActivity.class).putExtra("id",grou_id);
             startActivity(intent);
         }
     }
