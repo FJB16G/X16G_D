@@ -51,12 +51,13 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
 
         topimageButton  = view.findViewById(R.id.topimageButton);
         topimageButton.setOnClickListener(this);
+        topimageButton.setVisibility(View.VISIBLE);
 
         final TestDB db = new TestDB(getActivity());
         datakey = new ArrayList<>();
         dataset = new ArrayList<>();
         CreatedDay = new ArrayList<>();
-        Cursor res = db.query("select * from grou");
+        Cursor res = db.query("select grou_id,grou_name,strftime('%Y年%m月%d日',date) from grou");
         while (res.moveToNext()){
             datakey.add(res.getString(0));      //id
             dataset.add(res.getString(1));      //name
@@ -78,7 +79,6 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                         int fromPos = viewHolder.getAdapterPosition();
-
                         db.exec(String.format("delete from grou where grou_id = '%s';",SQLite.STR(datakey.get(fromPos))));
                         db.exec(String.format("delete from idea_log where grou_id = '%s';",SQLite.STR(datakey.get(fromPos))));
                         datakey.remove(fromPos);
@@ -92,6 +92,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
+        topimageButton.setVisibility(View.GONE);
         ((HomeActivity)getActivity()).changeFragment(PlanFragment.class);
     }
 }

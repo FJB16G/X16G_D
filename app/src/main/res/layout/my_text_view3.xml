@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
             android:gravity="right"
-            android:text="20XX年00月00日" />
+            android:text="20XX年00月00日"
+            android:textColor="#28e"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </FrameLayout>

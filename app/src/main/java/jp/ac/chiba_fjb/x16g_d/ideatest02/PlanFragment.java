@@ -11,10 +11,9 @@ import android.widget.EditText;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import java.util.Random;
-
 public class PlanFragment extends Fragment implements View.OnClickListener {
     private View npbackbutton;
+    private View topimageButton;
     private View createbutton;
     private EditText editText;
 
@@ -32,6 +31,7 @@ public class PlanFragment extends Fragment implements View.OnClickListener {
         npbackbutton.setOnClickListener(this);
         createbutton = view.findViewById(R.id.createbutton);
         createbutton.setOnClickListener(this);
+        topimageButton = view.findViewById(R.id.topimageButton);
     }
     @Override
     public void onClick(View view) {

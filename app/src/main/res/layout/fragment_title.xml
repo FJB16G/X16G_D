@@ -1,15 +1,15 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/title_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TitleFragment">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,15 +44,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ededed"
-            android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/my_recycler_view3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:paddingTop="56dp" />
         </LinearLayout>
-    </LinearLayout>
+    </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/topimageButton"

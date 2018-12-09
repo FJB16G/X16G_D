@@ -10,9 +10,7 @@
     <drawable name="transparameter">#d9000000</drawable>
     <style name="Theme.TranslucentBackground" parent="AppTheme">
         <item name="android:windowBackground">@drawable/transparameter</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowNoTitle">true</item>
+
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
