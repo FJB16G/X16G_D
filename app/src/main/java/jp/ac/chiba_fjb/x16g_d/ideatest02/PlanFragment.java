@@ -26,12 +26,12 @@ public class PlanFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
+
         super.onViewCreated(view, savedInstanceState);
         npbackbutton = view.findViewById(R.id.npbackbutton);
         npbackbutton.setOnClickListener(this);
         createbutton = view.findViewById(R.id.createbutton);
         createbutton.setOnClickListener(this);
-        topimageButton = view.findViewById(R.id.topimageButton);
     }
     @Override
     public void onClick(View view) {

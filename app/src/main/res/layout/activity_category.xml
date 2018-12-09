@@ -26,6 +26,7 @@
                 android:padding="5dp"
                 android:rotation="0"
 
+                android:tint="@android:color/background_light"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <TextView
@@ -47,6 +48,7 @@
                 android:padding="5dp"
                 android:rotation="180"
 
+                android:tint="@android:color/background_light"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
         </LinearLayout>
 
@@ -72,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:clickable="true"
+        android:tint="@android:color/background_light"
         app:backgroundTint="@color/ideaBule"
         app:layout_anchor="@+id/viewPager"
         app:layout_anchorGravity="right|bottom"

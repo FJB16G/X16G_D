@@ -1,9 +1,11 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class HomeActivity extends AppCompatActivity
 {
@@ -12,7 +14,6 @@ public class HomeActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        
     }
     public void changeFragment(Class c){
         changeFragment(c,null);
@@ -25,9 +26,11 @@ public class HomeActivity extends AppCompatActivity
             else
                 f.setArguments(new Bundle());
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.fragment,f);
-            ft.addToBackStack(null);
+            ft.remove(f);
+            ft.replace(R.id.fragment,f);
+            ft.addToBackStack("TitleFragment");
             ft.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

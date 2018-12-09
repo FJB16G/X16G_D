@@ -27,7 +27,8 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_close_clear_cancel" />
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="@android:color/background_light" />
 
         </LinearLayout>
     </LinearLayout>

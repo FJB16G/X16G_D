@@ -1,7 +1,6 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +12,6 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +24,9 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     private List<String> CreatedDay;
     private Activity mActivity = null;
     private View mView;
+    private View fragment;
     private TitleFragment mFragmentListener = null;
-    
+
     // RecyclerViewとAdapter
     private RecyclerView recyclerView = null;
 
@@ -45,13 +44,11 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
         return mView;
     }
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-
-        topimageButton  = view.findViewById(R.id.topimageButton);
+        topimageButton  = getActivity().findViewById(R.id.topimageButton);
         topimageButton.setOnClickListener(this);
-        topimageButton.setVisibility(View.VISIBLE);
 
         final TestDB db = new TestDB(getActivity());
         datakey = new ArrayList<>();
@@ -92,7 +89,6 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
-        topimageButton.setVisibility(View.GONE);
         ((HomeActivity)getActivity()).changeFragment(PlanFragment.class);
     }
 }

@@ -18,6 +18,5 @@ public class TopActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
-        finish();
     }
 }

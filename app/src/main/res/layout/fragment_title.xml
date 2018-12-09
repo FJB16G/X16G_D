@@ -18,25 +18,25 @@
             android:elevation="16dp"
             android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:text="グループ一覧"
+                android:textColor="#FFF"
+                android:textSize="20sp" />
+
             <ImageButton
-                android:id="@+id/Help"
+                android:id="@+id/menu"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#2ae"
                 android:padding="5dp"
-                app:srcCompat="@android:drawable/ic_menu_help" />
-
-            <TextView
-                android:id="@+id/top1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingRight="30dp"
-                android:text="グループ一覧"
-                android:textColor="#FFF"
-                android:textSize="20sp" />
+                android:tint="@android:color/background_light"
+                app:srcCompat="?android:attr/floatingToolbarOpenDrawable" />
 
         </LinearLayout>
 
@@ -60,7 +60,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:clickable="true"
-        android:src="@drawable/icon_add_clear"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@android:color/background_light"
+        android:visibility="visible"
+        app:backgroundTint="@color/ideaBule"
         app:layout_anchor="@+id/linearLayout"
         app:layout_anchorGravity="right|bottom" />
 
