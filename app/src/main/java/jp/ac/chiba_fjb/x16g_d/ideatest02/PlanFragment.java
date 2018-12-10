@@ -47,7 +47,7 @@ public class PlanFragment extends Fragment implements View.OnClickListener {
                 //ネット同期ができれば、ユーザIDを付与することにより管理者を入れる。
                 String r = RandomStringUtils.randomAlphabetic(10);
                 TestDB db = new TestDB(getActivity());
-                db.exec("insert into grou(grou_id,grou_name,date,user_id) values('" + r + "','" + name + "',datetime('now', 'localtime'),'')");
+                db.exec("insert into grou(grou_id,grou_name,date,user_id,grou_idea_name) values('" + r + "','" + name + "',datetime('now', 'localtime'),'','')");
                 ((HomeActivity) getActivity()).changeFragment(TitleFragment.class);
             }
         }

@@ -159,13 +159,13 @@ public class Category1 extends Fragment implements View.OnClickListener {
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), CreatedActivity.class).putExtra("id",grou_id);
+            Intent intent = new Intent(getActivity(), CreatedActivity.class).putExtra("id", grou_id);
             startActivity(intent);
         }else if(view.getId()==R.id.toIdeaActivity){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), IdeaActivity.class).putExtra("id",grou_id);
+            Intent intent = new Intent(getActivity(), IdeaActivity.class).putExtra("id", grou_id);
             startActivity(intent);
         }
     }
