@@ -1,9 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AllActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/ideaBule"
+            android:elevation="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/toIdeaActivity"
+                android:layout_width="70px"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:padding="5dp"
+                android:rotation="0"
+
+                android:tint="@android:color/background_light"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center"
+                android:text="一覧表示"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                app:fontFamily="@font/abhaya_libre_extrabold" />
+
+            <ImageView
+                android:id="@+id/toShareFragment"
+                android:layout_width="70px"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:padding="5dp"
+                android:rotation="180"
+                android:tint="@android:color/background_light"
+                app:srcCompat="?attr/actionModeShareDrawable" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ededed"
+            android:orientation="vertical"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/toIdea"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/background_light"
+                    android:text="アイディア一覧"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/toCategory"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/background_light"
+                    android:text="分類一覧"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/toCreated"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/background_light"
+                    android:text="結論"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

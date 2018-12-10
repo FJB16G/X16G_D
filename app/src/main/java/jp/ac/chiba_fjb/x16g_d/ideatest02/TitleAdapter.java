@@ -46,7 +46,7 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intent = new Intent(con,IdeaActivity.class).putExtra("id", datakey.get(position));
+                    Intent intent = new Intent(con,AllActivity.class).putExtra("id", datakey.get(position));
                     con.startActivity(intent);
             }
         });

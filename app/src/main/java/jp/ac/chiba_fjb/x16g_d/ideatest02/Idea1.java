@@ -67,8 +67,12 @@ public class Idea1 extends Fragment implements View.OnClickListener{
         final TestDB db = new TestDB(getActivity());
         dataset = new ArrayList<>();
         datakey = new ArrayList<>();
+
+        //グループIDの受け取り方
         Intent intent = getActivity().getIntent();
         grou_id = intent.getStringExtra("id");
+
+
         Cursor res = db.query("select idea_log.idea_id,idea.idea_name from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
         //データがなくなるまで次の行へ
         while(res.moveToNext())
