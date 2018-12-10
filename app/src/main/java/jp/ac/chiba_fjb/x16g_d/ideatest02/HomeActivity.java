@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.remove(f);
             ft.replace(R.id.fragment,f);
-            ft.addToBackStack("TitleFragment");
+            ft.addToBackStack(null);
             ft.commit();
 
         } catch (Exception e) {

@@ -28,15 +28,14 @@
                 android:textColor="#FFF"
                 android:textSize="20sp" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/menu"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#2ae"
                 android:padding="5dp"
-                android:tint="@android:color/background_light"
-                app:srcCompat="?android:attr/floatingToolbarOpenDrawable" />
+                android:src="@drawable/icon_leader"
+                android:tint="@android:color/background_light" />
 
         </LinearLayout>
 
@@ -55,7 +54,7 @@
     </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/topimageButton"
+        android:id="@+id/toPlan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

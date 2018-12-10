@@ -13,7 +13,6 @@ import org.apache.commons.lang.RandomStringUtils;
 
 public class PlanFragment extends Fragment implements View.OnClickListener {
     private View npbackbutton;
-    private View topimageButton;
     private View createbutton;
     private EditText editText;
 
@@ -26,7 +25,6 @@ public class PlanFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
     {
-
         super.onViewCreated(view, savedInstanceState);
         npbackbutton = view.findViewById(R.id.npbackbutton);
         npbackbutton.setOnClickListener(this);

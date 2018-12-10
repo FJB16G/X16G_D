@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TitleFragment extends Fragment implements View.OnClickListener {
-    private View topimageButton;
     private RecyclerView.Adapter adapter;
     private List<String> dataset;
     private List<String> datakey;
@@ -47,8 +47,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        topimageButton  = getActivity().findViewById(R.id.topimageButton);
-        topimageButton.setOnClickListener(this);
+        mView.findViewById(R.id.toPlan).setOnClickListener(this);
 
         final TestDB db = new TestDB(getActivity());
         datakey = new ArrayList<>();

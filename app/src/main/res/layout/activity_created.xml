@@ -37,7 +37,7 @@
                 android:text="一覧表示"
                 android:textColor="#fff"
                 android:textSize="20sp"
-                app:fontFamily="@font/abhaya_libre_extrabold" />
+                 />
 
             <ImageView
                 android:id="@+id/toShareFragment"
