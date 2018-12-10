@@ -11,8 +11,6 @@ import android.widget.EditText;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import java.util.Random;
-
 public class PlanFragment extends Fragment implements View.OnClickListener {
     private View npbackbutton;
     private View createbutton;

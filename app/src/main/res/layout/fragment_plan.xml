@@ -2,76 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/plan_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE"
+    android:background="@drawable/transparameter"
+    android:clickable="true"
     android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/Theme.TranslucentBackground"
     tools:context=".PlanFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="#2ae">
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/npbackbutton"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#2ae"
-            android:padding="5dp"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/nptextView"
-            android:layout_width="356dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingRight="40dp"
-            android:text="新規作成"
-            android:textColor="#FFF"
-            android:textSize="20sp" />
+            <ImageView
+                android:id="@+id/npbackbutton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="@android:color/background_light" />
 
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="40dp">
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:orientation="vertical"
-            android:padding="50dp">
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="グループ名を入力してください"
+                android:textColor="#fff"
+                android:textSize="18sp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:textColorHint="@color/ideaBule">
 
                 <EditText
                     android:id="@+id/groupname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="#fff"
                     android:ems="10"
                     android:hint="グループ名"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#fff" />
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/createbutton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="60dp"
+                android:layout_height="60dp"
                 android:background="#2ae"
                 android:gravity="center"
                 android:text="作成"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
