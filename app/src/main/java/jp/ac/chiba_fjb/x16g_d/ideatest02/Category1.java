@@ -109,6 +109,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
                     }
                 });
         getActivity().findViewById(R.id.toIdeaActivity).setOnClickListener(this);
+        getActivity().findViewById(R.id.toNextActivity).setOnClickListener(this);
         getActivity().findViewById(R.id.add).setOnClickListener(this);
         mIth.attachToRecyclerView(recyclerView);
         //カーソルを閉じる
@@ -154,14 +155,13 @@ public class Category1 extends Fragment implements View.OnClickListener {
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
             }
-//        }if(view.getId()==R.id.toNextActivity){
-//            for(int i = 0; i<datakey.size();i++){
-//                db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
-//            }
-//            Intent intent = new Intent(getActivity(), NextActivity.class);
-//            startActivity(intent);
-//        }
-        }if(view.getId()==R.id.toIdeaActivity){
+        }else if(view.getId()==R.id.toNextActivity){
+            for(int i = 0; i<datakey.size();i++){
+                db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
+            }
+            Intent intent = new Intent(getActivity(), CreatedActivity.class).putExtra("id",grou_id);
+            startActivity(intent);
+        }else if(view.getId()==R.id.toIdeaActivity){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
