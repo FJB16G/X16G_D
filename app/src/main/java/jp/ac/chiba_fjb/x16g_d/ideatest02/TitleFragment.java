@@ -5,18 +5,16 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,6 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     private List<String> CreatedDay;
     private Activity mActivity = null;
     private View mView;
-    private String spinnerItems[] = {"使い方","設定"};
     private TitleFragment mFragmentListener = null;
 
     // RecyclerViewとAdapter
@@ -39,12 +36,14 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         mView = inflater.inflate(R.layout.fragment_title, container, false);
-
+        Toolbar toolbar = (Toolbar) mView.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+        setHasOptionsMenu(true);
         // RecyclerViewの参照を取得
         recyclerView = mView.findViewById(R.id.my_recycler_view3);
         // レイアウトマネージャを設定(ここで縦方向の標準リストであることを指定)
         recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
-
         return mView;
     }
     @Override
@@ -52,7 +51,6 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     {
         super.onViewCreated(view, savedInstanceState);
         mView.findViewById(R.id.toPlan).setOnClickListener(this);
-        mView.findViewById(R.id.menu).setOnClickListener(this);
 
         final TestDB db = new TestDB(getActivity());
         datakey = new ArrayList<>();
@@ -67,7 +65,6 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
         res.close();
         adapter = new TitleAdapter(getContext(),dataset,CreatedDay,datakey);
         recyclerView.setAdapter(adapter);
-
 
         //ドラッグ＆ドロップのやつ
         ItemTouchHelper mIth  = new ItemTouchHelper(
@@ -91,38 +88,21 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
                 });
         mIth.attachToRecyclerView(recyclerView);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.action_settings){
+            
+        }else if (item.getItemId()==R.id.action_settings2){
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.toPlan) {
             ((HomeActivity) getActivity()).changeFragment(PlanFragment.class);
-        }else if (view.getId() == R.id.menu){
-            final Spinner spinner = mView.findViewById(R.id.spinner);
-            spinner.setVisibility(mView.VISIBLE);
-            // ArrayAdapter
-            ArrayAdapter<String> adapter
-                    = new ArrayAdapter<>(getActivity(),
-                    android.R.layout.simple_spinner_item, spinnerItems);
-
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            // spinner に adapter をセット
-            spinner.setAdapter(adapter);
-
-            // リスナーを登録
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                //　アイテムが選択された時
-                @Override
-                public void onItemSelected(AdapterView<?> parent,
-                                           View view, int position, long id) {
-                    Spinner spinner = (Spinner)parent;
-                    String item = (String)spinner.getSelectedItem();
-
-                }
-
-                //　アイテムが選択されなかった
-                public void onNothingSelected(AdapterView<?> parent) {
-                }
-            });
         }
     }
 }

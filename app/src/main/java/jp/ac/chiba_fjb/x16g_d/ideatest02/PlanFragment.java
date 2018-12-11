@@ -30,6 +30,7 @@ public class PlanFragment extends Fragment implements View.OnClickListener {
         npbackbutton.setOnClickListener(this);
         createbutton = view.findViewById(R.id.createbutton);
         createbutton.setOnClickListener(this);
+        KeyboardUtils.initHidden(getActivity());
     }
     @Override
     public void onClick(View view) {

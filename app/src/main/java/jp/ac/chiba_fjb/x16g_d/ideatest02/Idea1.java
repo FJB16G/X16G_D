@@ -63,7 +63,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        KeyboardUtils.initHidden(getActivity());
         final TestDB db = new TestDB(getActivity());
         dataset = new ArrayList<>();
         datakey = new ArrayList<>();
