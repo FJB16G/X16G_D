@@ -106,6 +106,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                     }
                 });
         getActivity().findViewById(R.id.toCategoryActivity).setOnClickListener(this);
+        getActivity().findViewById(R.id.toAllActivity).setOnClickListener(this);
         getActivity().findViewById(R.id.add).setOnClickListener(this);
         mIth .attachToRecyclerView(recyclerView);
         //カーソルを閉じる
@@ -159,7 +160,15 @@ public class Idea1 extends Fragment implements View.OnClickListener{
             }
             Intent intent = new Intent(getActivity(), CategoryActivity.class).putExtra("id",grou_id);
             startActivity(intent);
+
+        }else if(view.getId()==R.id.toAllActivity){
+            for(int i = 0; i<datakey.size();i++){
+                db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
+            }
+            Intent intent = new Intent(getActivity(), AllActivity.class);
+            startActivity(intent);
         }
+
     }
     public Idea1() {
         // Required empty public constructor

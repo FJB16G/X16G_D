@@ -5,7 +5,7 @@
     <!-- 背景色 -->
     <solid android:color="#ffffff" />
 
-    <!-- 角の丸み -->
-    <corners android:radius="6dp" />
+    <stroke
+        android:width="2dp" />
 
 </shape>

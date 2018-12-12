@@ -35,7 +35,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|center"
                 android:paddingRight="30dp"
-                android:text="結論"
+                android:text="結論(ステップ3)"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 

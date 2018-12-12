@@ -30,6 +30,7 @@ public class AllActivity extends AppCompatActivity implements View.OnClickListen
         findViewById(R.id.toIdea).setOnClickListener(this);
         findViewById(R.id.toCategory).setOnClickListener(this);
         findViewById(R.id.toCreated).setOnClickListener(this);
+        findViewById(R.id.toHome).setOnClickListener(this);
 
     }
     @Override
@@ -46,7 +47,13 @@ public class AllActivity extends AppCompatActivity implements View.OnClickListen
         }else if(view.getId()==R.id.toCreated){
             Intent intent = new Intent(AllActivity.this,CreatedActivity.class).putExtra("id",grou_id);
             startActivity(intent);
+
+        }else if(view.getId()==R.id.toHome){
+            Intent intent = new Intent(AllActivity.this,HomeActivity.class).putExtra("id",grou_id);
+            startActivity(intent);
         }
+
+
 
     }
     public AllActivity() {

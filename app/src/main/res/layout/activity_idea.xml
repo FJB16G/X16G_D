@@ -18,25 +18,35 @@
             android:elevation="16dp"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/toAllActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:padding="5dp"
+                android:rotation="0"
+
+                android:tint="@android:color/background_light"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical|center"
-                android:paddingLeft="30dp"
-                android:text="アイデア画面"
+                android:text="アイディア(ステップ1)"
                 android:textColor="#fff"
-                android:textSize="20sp"
-                 />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/toCategoryActivity"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:padding="5dp"
                 android:rotation="180"
+
                 android:tint="@android:color/background_light"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
         </LinearLayout>

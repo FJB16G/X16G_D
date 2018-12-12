@@ -41,7 +41,7 @@ private TestDB db;
         intent = new Intent();
         if (v.getId() == R.id.toCategory){
             db.exec("update grou set grou_idea_name = '" + name + "' where grou_id = '" + grou_id + "'");
-            intent = new Intent(this,CategoryActivity.class).putExtra("id", grou_id);
+            intent = new Intent(this,AllActivity.class).putExtra("id", grou_id);
             startActivity(intent);
             finish();
         }else if (v.getId() == R.id.commit){
