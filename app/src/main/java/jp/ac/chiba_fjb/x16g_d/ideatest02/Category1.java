@@ -66,7 +66,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        KeyboardUtils.initHidden(getActivity());
         final TestDB db = new TestDB(getActivity());
         Intent intent = getActivity().getIntent();
         grou_id = intent.getStringExtra("id");

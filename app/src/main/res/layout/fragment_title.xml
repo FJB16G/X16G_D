@@ -1,4 +1,4 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/title_layout"
@@ -7,49 +7,8 @@
     tools:context=".TitleFragment">
 
     <FrameLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="#2ae"
-            android:elevation="16dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingLeft="30dp"
-                android:text="グループ一覧"
-                android:textColor="#FFF"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/menu"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/icon_leader"
-                android:tint="@android:color/background_light" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="#fff"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.3" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,25 +16,42 @@
             android:background="#ededed"
             android:orientation="vertical">
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/ideaBule"
+                android:elevation="16dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/ToolbarTheme"
+                app:title="グループ一覧"
+                app:titleMarginStart="120dp"
+                app:titleTextColor="#fff" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/my_recycler_view3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="56dp" />
+                android:layout_height="match_parent" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            android:orientation="vertical">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/toPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:src="@android:drawable/ic_input_add"
+                android:tint="@android:color/background_light"
+                android:visibility="visible"
+                app:backgroundTint="@color/ideaBule" />
+        </LinearLayout>
+
     </FrameLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/toPlan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_input_add"
-        android:tint="@android:color/background_light"
-        android:visibility="visible"
-        app:backgroundTint="@color/ideaBule"
-        app:layout_anchor="@+id/linearLayout"
-        app:layout_anchorGravity="right|bottom" />
-
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

@@ -1,5 +1,7 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +15,12 @@ private String name;
 private String grou_id;
 private Intent intent;
 private TestDB db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_created);
+        KeyboardUtils.initHidden(this);
         intent = getIntent();
         db = new TestDB(this);
         grou_id = intent.getStringExtra("id");
