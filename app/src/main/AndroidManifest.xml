@@ -32,6 +32,8 @@
             android:name=".ConclusionActivity" />
         <activity
             android:name=".HomeActivity"/>
+        <activity
+            android:name=".AllActivity"/>
 
     </application>
 

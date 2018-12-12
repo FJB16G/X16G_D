@@ -2,6 +2,8 @@ package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         this.day = day;
         this.datakey = datakey;
         this.dataArray = dataset;
+
     }
     public TitleAdapter(List<String> datakey){
         this.datakey = datakey;
@@ -37,6 +40,8 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view3, parent, false);
         return new ViewHolder(view);
+
+
     }
 
     @Override
@@ -46,8 +51,12 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intent = new Intent(con,IdeaActivity.class).putExtra("id", datakey.get(position));
-                    con.startActivity(intent);
+                Intent intent = new Intent(con,AllActivity.class).putExtra("id", datakey.get(position));
+                con.startActivity(intent);
+
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.add(R.id.output,new ATest());
+//                ft.commit();
             }
         });
     }
