@@ -68,8 +68,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         KeyboardUtils.initHidden(getActivity());
         final TestDB db = new TestDB(getActivity());
-        Intent intent = getActivity().getIntent();
-        grou_id = intent.getStringExtra("id");
+        grou_id = getArguments().getString("id");
         Cursor res = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "';");
 
         dataset = new ArrayList<>();
@@ -119,6 +118,8 @@ public class Category1 extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         TestDB db = new TestDB(getActivity());
+        Bundle bundle = new Bundle();
+        bundle.putString("id", grou_id);
         if (view.getId()==R.id.add) {
             category = (EditText)mView.findViewById(R.id.categoryText);
             String tuika = category.getText().toString();
@@ -159,14 +160,14 @@ public class Category1 extends Fragment implements View.OnClickListener {
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), CreatedActivity.class).putExtra("id", grou_id);
-            startActivity(intent);
+            bundle.putString("id", grou_id);
+            ((HomeActivity)getActivity()).changeFragment(CreatedFragment.class,bundle);
         }else if(view.getId()==R.id.toIdeaActivity){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), AllActivity.class).putExtra("id", grou_id);
-            startActivity(intent);
+            bundle.putString("id", grou_id);
+            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
         }
     }
 

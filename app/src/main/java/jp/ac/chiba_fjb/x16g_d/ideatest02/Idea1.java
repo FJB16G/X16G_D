@@ -20,10 +20,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Idea1 extends Fragment implements View.OnClickListener{
 
     private RecyclerView.Adapter adapter;
@@ -67,8 +63,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
         final TestDB db = new TestDB(getActivity());
         dataset = new ArrayList<>();
         datakey = new ArrayList<>();
-        Intent intent = getActivity().getIntent();
-        grou_id = intent.getStringExtra("id");
+        grou_id = getArguments().getString("id");
         Cursor res = db.query("select idea_log.idea_id,idea.idea_name from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
         //データがなくなるまで次の行へ
         while(res.moveToNext())
@@ -105,8 +100,8 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                         adapter.notifyDataSetChanged();
                     }
                 });
-        getActivity().findViewById(R.id.toCategoryActivity).setOnClickListener(this);
-        getActivity().findViewById(R.id.toAllActivity).setOnClickListener(this);
+        getActivity().findViewById(R.id.toCategory).setOnClickListener(this);
+        getActivity().findViewById(R.id.toAll).setOnClickListener(this);
         getActivity().findViewById(R.id.add).setOnClickListener(this);
         mIth .attachToRecyclerView(recyclerView);
         //カーソルを閉じる
@@ -115,6 +110,8 @@ public class Idea1 extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         TestDB db = new TestDB(getActivity());
+        Bundle bundle = new Bundle();
+        bundle.putString("id", grou_id);
         if (view.getId()==R.id.add) {
             idea = (EditText)mView.findViewById(R.id.ideaText);
             String tuika = idea.getText().toString();
@@ -152,21 +149,19 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                 db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
                 //アイデアは必ずどこかのカテゴリにカテゴライズされている
                 db.exec("insert into idea_log values('" + grou_id + "','user','g000000000c0000000','" + c + "');");
-
             }
-        }if(view.getId()==R.id.toCategoryActivity){
+        }if(view.getId()==R.id.toCategory){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), CategoryActivity.class).putExtra("id",grou_id);
-            startActivity(intent);
-
-        }else if(view.getId()==R.id.toAllActivity){
+            bundle.putString("id", grou_id);
+            ((HomeActivity)getActivity()).changeFragment(CategoryFragment.class,bundle);
+        }else if(view.getId()==R.id.toAll){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
             }
-            Intent intent = new Intent(getActivity(), AllActivity.class);
-            startActivity(intent);
+            bundle.putString("id", grou_id);
+            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
         }
 
     }

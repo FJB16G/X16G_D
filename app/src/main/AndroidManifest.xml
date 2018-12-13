@@ -23,18 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IdeaActivity" />
-        <activity
-            android:name=".CategoryActivity" />
-        <activity
-            android:name=".CreatedActivity" />
-        <activity
-            android:name=".ConclusionActivity" />
-        <activity
             android:name=".HomeActivity"/>
-        <activity
-            android:name=".AllActivity"/>
-
     </application>
 
 </manifest>

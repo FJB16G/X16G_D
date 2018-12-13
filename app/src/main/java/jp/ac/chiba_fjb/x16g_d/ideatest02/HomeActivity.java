@@ -29,11 +29,11 @@ public class HomeActivity extends AppCompatActivity
     public void changeFragment(Class c){
         changeFragment(c,null);
     }
-    public void changeFragment(Class c,Bundle budle){
+    public void changeFragment(Class c,Bundle bundle){
         try {
             Fragment f = (Fragment) c.newInstance();
-            if(budle != null)
-                f.setArguments(budle);
+            if(bundle != null)
+                f.setArguments(bundle);
             else
                 f.setArguments(new Bundle());
             ft = getSupportFragmentManager().beginTransaction();
@@ -43,20 +43,5 @@ public class HomeActivity extends AppCompatActivity
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.memu_main,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-
-        }
-        return true;
     }
 }

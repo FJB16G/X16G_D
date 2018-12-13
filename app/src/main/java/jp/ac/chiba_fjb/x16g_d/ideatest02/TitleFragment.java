@@ -63,7 +63,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
             CreatedDay.add(res.getString(2));   //date
         }
         res.close();
-        adapter = new TitleAdapter(getContext(),dataset,CreatedDay,datakey);
+        adapter = new TitleAdapter(getActivity(),dataset,CreatedDay,datakey);
         recyclerView.setAdapter(adapter);
 
         //ドラッグ＆ドロップのやつ

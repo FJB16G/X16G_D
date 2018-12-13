@@ -1,7 +1,9 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
@@ -19,13 +21,13 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
     private List<String> dataArray = new ArrayList<>();
     private List<String> datakey = new ArrayList<>();
     private List<String> day = new ArrayList<>();
-    private Context con;
+    private Activity activity;
     private onItemClickListener listener;
     private String id;
 
-    public TitleAdapter(Context context,List<String> dataset,List<String> day,List<String> datakey) {
+    public TitleAdapter(Activity activity,List<String> dataset,List<String> day,List<String> datakey) {
         //MainActivityのArrayListを持ってきてる？
-        this.con = context;
+        this.activity = activity;
         this.day = day;
         this.datakey = datakey;
         this.dataArray = dataset;
@@ -51,12 +53,9 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(con,AllActivity.class).putExtra("id", datakey.get(position));
-                con.startActivity(intent);
-
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.add(R.id.output,new ATest());
-//                ft.commit();
+                Bundle bundle = new Bundle();
+                bundle.putString("id", datakey.get(position));
+                ((HomeActivity)activity).changeFragment(AllFragment.class,bundle);
             }
         });
     }

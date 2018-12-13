@@ -25,10 +25,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Category2 extends Fragment implements View.OnClickListener, Category2Adapter.OnItemClickListener {
     private RecyclerView.Adapter Adapter;
     private RecyclerView.Adapter Adapter2;
@@ -116,11 +112,7 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         recyclerView = mView.findViewById(R.id.my_recycler_view2);
         // レイアウトマネージャを設定(ここで縦方向の標準リストであることを指定)
         recyclerView.setLayoutManager(new LinearLayoutManager(Activity));
-
         return mView;
-
-
-
     }
 
 
