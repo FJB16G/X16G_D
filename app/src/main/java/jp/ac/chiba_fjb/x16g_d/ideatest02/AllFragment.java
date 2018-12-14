@@ -30,20 +30,21 @@ private String grou_id;
     }
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        //グループの取得をしているところ
         grou_id = getArguments().getString("id");
         mView.findViewById(R.id.toIdea).setOnClickListener(this);
         mView.findViewById(R.id.toCategory).setOnClickListener(this);
         mView.findViewById(R.id.toCreated).setOnClickListener(this);
         mView.findViewById(R.id.toHome).setOnClickListener(this);
-        TextView textView = mView.findViewById(R.id.groupId);
-        textView.setText(grou_id);
     }
 
     @Override
     public void onClick(View v) {
+        //フラグメントの値をbundleにセット
         Bundle bundle = new Bundle();
         bundle.putString("id", grou_id);
         if(v.getId()==R.id.toIdea){
+            //最後の,bundleという部分が値が入った箱を送っている処理
             ((HomeActivity)getActivity()).changeFragment(IdeaFragment.class,bundle);
         }else if(v.getId()==R.id.toCategory){
             ((HomeActivity)getActivity()).changeFragment(CategoryFragment.class,bundle);

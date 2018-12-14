@@ -43,4 +43,9 @@ public class HomeActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.memu_main,menu);
+        return true;
+    }
 }
