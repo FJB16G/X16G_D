@@ -53,7 +53,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     {
         super.onViewCreated(view, savedInstanceState);
         mView.findViewById(R.id.toPlan).setOnClickListener(this);
-
+        KeyboardUtils.hide(getActivity());
         final TestDB db = new TestDB(getActivity());
         datakey = new ArrayList<>();
         dataset = new ArrayList<>();

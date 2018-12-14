@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity
         getLayoutInflater().inflate(R.layout.fragment_title,fl);
         ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.fragment,new TitleFragment()).commit();
+        KeyboardUtils.hide(this);
     }
     public void changeFragment(Class c){
         changeFragment(c,null);

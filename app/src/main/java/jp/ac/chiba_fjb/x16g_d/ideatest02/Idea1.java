@@ -100,8 +100,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                         adapter.notifyDataSetChanged();
                     }
                 });
-        getActivity().findViewById(R.id.toCategoryActivity).setOnClickListener(this);
-        getActivity().findViewById(R.id.toAllFragment).setOnClickListener(this);
+        getActivity().findViewById(R.id.toCategoryFragment).setOnClickListener(this);
         getActivity().findViewById(R.id.add).setOnClickListener(this);
         mIth .attachToRecyclerView(recyclerView);
         //カーソルを閉じる
@@ -150,20 +149,12 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                 //アイデアは必ずどこかのカテゴリにカテゴライズされている
                 db.exec("insert into idea_log values('" + grou_id + "','user','g000000000c0000000','" + c + "');");
             }
-        }if(view.getId()==R.id.toCategoryActivity){
+        }if(view.getId()==R.id.toCategoryFragment){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
             }
-            bundle.putString("id", grou_id);
             ((HomeActivity)getActivity()).changeFragment(CategoryFragment.class,bundle);
-        }else if(view.getId()==R.id.toAllFragment){
-            for(int i = 0; i<datakey.size();i++){
-                db.exec("update idea set idea_name = '" + dataset.get(i) + "' where idea_id = '" + datakey.get(i) + "';");
-            }
-            bundle.putString("id", grou_id);
-            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
         }
-
     }
     public Idea1() {
         // Required empty public constructor

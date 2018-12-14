@@ -14,25 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class IdeaFragment extends Fragment {
+public class IdeaFragment extends Fragment implements View.OnClickListener {
     private View mView;
     private CharSequence[] tabTitle = {"アイデア入力", "トレンド検索"};
+    private String grou_id;
     public IdeaFragment() {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_idea, container, false);
-        FloatingActionButton floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),HomeActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-        String grou_id = getArguments().getString("id");
+        mView.findViewById(R.id.floatingActionButton).setOnClickListener(this);
+        mView.findViewById(R.id.floatingActionButton2).setOnClickListener(this);
+        grou_id = getArguments().getString("id");
         final Bundle bundle = new Bundle();
         bundle.putString("id", grou_id);
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(this.getChildFragmentManager())
@@ -71,5 +65,18 @@ public class IdeaFragment extends Fragment {
         TabLayout tabLayout = mView.findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
         return mView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", grou_id);
+        if (v.getId()==R.id.floatingActionButton){
+            Intent intent = new Intent(getActivity(),HomeActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }else if (v.getId()==R.id.floatingActionButton2){
+            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
+        }
     }
 }

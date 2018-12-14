@@ -26,6 +26,7 @@
             android:autoText="false"
             android:ems="10"
             android:hint="カテゴリ入力"
+            android:backgroundTint="@color/ideaBule"
             android:inputType="textPersonName" />
 
         <Button
