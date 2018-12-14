@@ -20,9 +20,9 @@
 
             <ImageView
                 android:id="@+id/toAllFragment"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1.4"
+                android:layout_weight="0"
                 android:padding="5dp"
                 android:rotation="0"
 

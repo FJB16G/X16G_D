@@ -18,8 +18,7 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
     public CreatedFragment() {
         // Required empty public constructor
     }
-
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -78,8 +78,7 @@ public class HomeActivity extends AppCompatActivity
         return state;
     }
 
-
-    //ダイアログ表示
+    //初回起動チュートリアル表示部分
     @Override
     public void onResume(){
         super.onResume();
@@ -88,7 +87,7 @@ public class HomeActivity extends AppCompatActivity
 
         // ダイアログの設定
         alertDialog.setTitle("FirstBoot");          //タイトル
-        alertDialog.setMessage("初回メッセージ");      //内容
+        alertDialog.setMessage("初回メッセージ");    //内容
         alertDialog.setIcon(R.drawable.all_blue);   //アイコン設定
 
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -106,8 +105,4 @@ public class HomeActivity extends AppCompatActivity
             alertDialog.show();
         }
     }
-
-
-
-
 }
