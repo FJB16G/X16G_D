@@ -3,6 +3,7 @@ package jp.ac.chiba_fjb.x16g_d.ideatest02;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -24,6 +25,7 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
     private Activity activity;
     private onItemClickListener listener;
     private String id;
+    private String [] color = {"#ff8800","#22aaee","#aa66cc"};
 
     public TitleAdapter(Activity activity,List<String> dataset,List<String> day,List<String> datakey) {
         //MainActivityのArrayListを持ってきてる？
@@ -50,6 +52,8 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.ViewHolder>{
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mButton.setText(dataArray.get(position));
         holder.mTextView.setText(day.get(position));
+        int mod = position%3;
+        holder.mTextView.setTextColor(Color.parseColor(color[mod]));
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

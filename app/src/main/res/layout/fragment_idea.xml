@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -70,30 +70,32 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        android:tint="@android:color/background_light"
-        app:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_anchor="@+id/viewPager"
-        app:layout_anchorGravity="right|bottom"
-        app:srcCompat="@drawable/home" />
+        android:layout_height="match_parent"
+        android:gravity="bottom|right"
+        android:orientation="vertical">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="75dp"
-        android:clickable="true"
-        app:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_anchor="@+id/viewPager"
-        app:layout_anchorGravity="bottom|right"
-        app:maxImageSize="55dp"
-        app:srcCompat="@drawable/all_orange" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:src="@drawable/all_orange"
+            app:backgroundTint="@android:color/holo_orange_dark" />
 
-</android.support.design.widget.CoordinatorLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:src="@drawable/home"
+            android:tint="@android:color/background_light"
+            app:backgroundTint="@android:color/holo_orange_dark" />
+
+    </LinearLayout>
+
+</FrameLayout>

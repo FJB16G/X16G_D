@@ -22,7 +22,7 @@
                 android:id="@+id/toAllFragment"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="1.4"
                 android:padding="5dp"
                 android:rotation="0"
 
@@ -95,21 +95,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
             android:clickable="true"
             app:backgroundTint="@android:color/holo_purple"
             app:layout_anchor="@+id/viewPager"
             app:layout_anchorGravity="bottom|right"
-            app:maxImageSize="55dp"
             app:srcCompat="@drawable/all_purple" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="30dp"
+            android:layout_margin="10dp"
             android:clickable="true"
             android:tint="@android:color/background_light"
             app:backgroundTint="@android:color/holo_purple"

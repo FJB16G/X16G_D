@@ -133,8 +133,7 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         final TestDB db = new TestDB(getActivity());
 
 
-        Intent intent = getActivity().getIntent();
-        grou_id = intent.getStringExtra("id");
+        grou_id = getArguments().getString("id");
 
 
 
