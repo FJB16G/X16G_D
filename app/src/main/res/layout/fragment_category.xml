@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CategoryFragment">
-
-    <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,19 +14,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/ideaBule"
-            android:elevation="16dp"
+            android:background="#fff"
+            android:elevation="6dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/toIdeaActivity"
+                android:id="@+id/toAllFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:padding="5dp"
                 android:rotation="0"
 
-                android:tint="@android:color/background_light"
+                android:tint="@color/ideaBule"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <TextView
@@ -38,7 +36,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|center"
                 android:text="カテゴライズ(ステップ2)"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="20sp" />
 
             <ImageView
@@ -49,7 +47,7 @@
                 android:padding="5dp"
                 android:rotation="180"
 
-                android:tint="@android:color/background_light"
+                android:tint="@color/ideaBule"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
         </LinearLayout>
 
@@ -57,7 +55,10 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/underline" />
+            android:background="@drawable/underline"
+            app:tabIndicatorColor="@color/ideaBule"
+            app:tabRippleColor="@color/ideaBule"
+            app:tabSelectedTextColor="@color/ideaBule" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
@@ -69,23 +70,30 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|right"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:tint="@android:color/background_light"
+        app:backgroundTint="@color/ideaBule"
+        app:layout_anchor="@+id/viewPager"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@drawable/home" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:clickable="true"
-            android:tint="@android:color/background_light"
-            app:backgroundTint="@color/ideaBule"
-            app:layout_anchor="@+id/viewPager"
-            app:layout_anchorGravity="right|bottom"
-            app:srcCompat="@drawable/home" />
-    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="75dp"
+        android:clickable="true"
+        app:backgroundTint="@color/ideaBule"
+        app:layout_anchor="@+id/viewPager"
+        app:layout_anchorGravity="bottom|right"
+        app:maxImageSize="55dp"
+        app:srcCompat="@drawable/all_blue" />
 
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

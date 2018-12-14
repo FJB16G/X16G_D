@@ -40,12 +40,7 @@ public class Category2Adapter extends RecyclerView.Adapter<Category2Adapter.View
     private boolean flg = false;
     private int cnt=0;
 
-    Category2Adapter(List<String> dataset ) {
-        //MainActivityのArrayListを持ってきてる？
-        dataArray = dataset;
-        cnt=1;
 
-    }
 
     Category2Adapter(List<String> dataset, List<String> dataset2) {
         //MainActivityのArrayListを持ってきてる？
@@ -96,6 +91,7 @@ public class Category2Adapter extends RecyclerView.Adapter<Category2Adapter.View
             //Spinnerの設定
             ArrayAdapter adapter = new ArrayAdapter<Pair<String,String>>(v.getContext(), android.R.layout.simple_spinner_item);
             Log.w("dbg2",dataArray.get(0));
+            Log.w("dbg2",dataArray2.get(0));
 
             if (cnt==2){
                 Log.w("dbg2",dataArray2.get(0)+"/2個目！！！！");
@@ -175,7 +171,9 @@ public class Category2Adapter extends RecyclerView.Adapter<Category2Adapter.View
     @Override
     public int getItemCount() {
         return dataArray.size();
+
     }
+
 }
 
 

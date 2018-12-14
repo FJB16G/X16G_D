@@ -3,6 +3,7 @@ package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -25,21 +26,25 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class Category2 extends Fragment implements View.OnClickListener, Category2Adapter.OnItemClickListener {
     private RecyclerView.Adapter Adapter;
-    private RecyclerView.Adapter Adapter2;
     private List<String> dataset;
     private List<String> datakey;
     private List<String> dataset2;
     private List<String> datakey2;
     private List<String> a;
-    private List<String> SpinnerArray;
+    private List<String> dataset22;
     private Activity Activity = null;
     private View mView;
     private View sView;
     private Button button;
     Spinner mSpinner;
     TextView mTextview;
+    private String grou_id;
     private RecyclerFragmentListener mFragmentListener = null;
 
     // RecyclerViewとAdapter
@@ -62,7 +67,7 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         LinkedHashMap<String,String> lhm3 = new LinkedHashMap<>();
 
         TestDB db = new TestDB(getActivity());
-        Cursor res3 = db.query("select * from category where category_name = '"+value+"';");
+        Cursor res3 = db.query("select * from category where category_name = '"+value+"' and substr(category_id,1,10) = '" + grou_id + "'or category_id = 'g000000000c0000000';");
 
         while(res3.moveToNext())
         {
@@ -112,7 +117,11 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         recyclerView = mView.findViewById(R.id.my_recycler_view2);
         // レイアウトマネージャを設定(ここで縦方向の標準リストであることを指定)
         recyclerView.setLayoutManager(new LinearLayoutManager(Activity));
+
         return mView;
+
+
+
     }
 
 
@@ -123,13 +132,21 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
 
         final TestDB db = new TestDB(getActivity());
 
-        dataset = new ArrayList<>();
+
+        Intent intent = getActivity().getIntent();
+        grou_id = intent.getStringExtra("id");
+
+
+
 
 
 
 
         //クエリーの発行
-        Cursor res = db.query("select * from idea;");
+        Cursor res = db.query("select idea_log.idea_id,idea.idea_name from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
+
+        //Cursor res = db.query("select * from idea");
+
         //データがなくなるまで次の行へ
         while(res.moveToNext())
         {
@@ -139,19 +156,28 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         dataset = new ArrayList<>(lhm.values());
         datakey = new ArrayList<>(lhm.keySet());
 
+
+        dataset2 = new ArrayList<>();
+        datakey2 = new ArrayList<>();
+
+
+
         //クエリーの発行
-        Cursor res2 = db.query("select * from category;");
+        Cursor res2 = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "'or category_id = 'g000000000c0000000';");
+
+        //Cursor res2 = db.query("select * from category");
+
         //データがなくなるまで次の行へ
         while(res2.moveToNext())
         {
             //0列目を取り出し
             lhm2.put(res2.getString(0),res2.getString(1));
+
+           datakey2.add(res2.getString(0));
+           dataset2.add(res2.getString(1));
         }
         dataset2 = new ArrayList<>(lhm2.values());
         datakey2 = new ArrayList<>(lhm2.keySet());
-
-
-
 
 
 

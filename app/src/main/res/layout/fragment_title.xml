@@ -20,13 +20,13 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:background="@color/ideaBule"
-                android:elevation="16dp"
+                android:background="#fff"
+                android:elevation="6dp"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="@style/ToolbarTheme"
                 app:title="グループ一覧"
                 app:titleMarginStart="120dp"
-                app:titleTextColor="#fff" />
+                app:titleTextColor="#000" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/my_recycler_view3"

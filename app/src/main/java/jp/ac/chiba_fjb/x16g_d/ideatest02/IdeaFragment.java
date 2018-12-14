@@ -23,7 +23,7 @@ public class IdeaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_idea, container, false);
-        FloatingActionButton floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.floatingActionButton3);
+        FloatingActionButton floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
