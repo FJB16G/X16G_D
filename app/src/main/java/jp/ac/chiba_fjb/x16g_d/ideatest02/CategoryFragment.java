@@ -34,7 +34,7 @@ public class CategoryFragment extends Fragment {
         String grou_id = getArguments().getString("id");
         final Bundle bundle = new Bundle();
         bundle.putString("id", grou_id);
-        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getFragmentManager())
+        FragmentPagerAdapter adapter = new FragmentPagerAdapter(this.getChildFragmentManager())
         {
             @Override
             public Fragment getItem(int position)
