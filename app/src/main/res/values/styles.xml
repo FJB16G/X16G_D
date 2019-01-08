@@ -9,7 +9,7 @@
     </style>
     <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Toolbar menu overflow icon color -->
-        <item name="android:textColorSecondary">#fff</item>
+        <item name="android:textColorSecondary">@color/ideaBule</item>
     </style>
     <drawable name="transparameter">#d9000000</drawable>
     <style name="Theme.TranslucentBackground" parent="AppTheme">

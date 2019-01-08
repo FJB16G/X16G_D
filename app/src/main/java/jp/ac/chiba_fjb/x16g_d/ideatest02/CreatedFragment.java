@@ -18,8 +18,7 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
     public CreatedFragment() {
         // Required empty public constructor
     }
-
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,6 +28,7 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
          mView.findViewById(R.id.toAllFragment).setOnClickListener(this);
          mView.findViewById(R.id.commit).setOnClickListener(this);
          mView.findViewById(R.id.floatingActionButton).setOnClickListener(this);
+         mView.findViewById(R.id.floatingActionButton2).setOnClickListener(this);
          Cursor res = db.query("select grou_idea_name from grou where grou_id = '" + grou_id + "'");
          while (res.moveToNext()) {
              //0列目を取り出し
@@ -44,10 +44,10 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         db = new TestDB(getActivity());
         Bundle bundle = new Bundle();
+        bundle.putString("id", grou_id);
         if (v.getId() == R.id.toAllFragment){
             db.exec("update grou set grou_idea_name = '" + name + "' where grou_id = '" + grou_id + "'");
-            bundle.putString("id", grou_id);
-            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
+            ((HomeActivity)getActivity()).changeFragment(CategoryFragment.class,bundle);
         }else if (v.getId() == R.id.commit){
             name = grou_idea_name.getText().toString();
             db.exec("update grou set grou_idea_name = '" + name + "' where grou_id = '" + grou_id + "'");
@@ -58,6 +58,8 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity(),HomeActivity.class);
             startActivity(intent);
             getActivity().finish();
+        }else if (v.getId() == R.id.floatingActionButton2){
+            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
         }
     }
 }

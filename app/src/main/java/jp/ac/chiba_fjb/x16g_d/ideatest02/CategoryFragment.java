@@ -12,26 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CategoryFragment extends Fragment {
+public class CategoryFragment extends Fragment implements View.OnClickListener {
 
     private CharSequence[] tabTitle = {"カテゴリ入力", "カテゴリわけ"};
     private View mView;
+    private String grou_id;
     public CategoryFragment() {
     }
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_category, container, false);
-        FloatingActionButton floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.floatingActionButton2);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),HomeActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-        String grou_id = getArguments().getString("id");
+        mView.findViewById(R.id.floatingActionButton).setOnClickListener(this);
+        mView.findViewById(R.id.floatingActionButton2).setOnClickListener(this);
+        grou_id = getArguments().getString("id");
         final Bundle bundle = new Bundle();
         bundle.putString("id", grou_id);
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(this.getChildFragmentManager())
@@ -71,4 +65,16 @@ public class CategoryFragment extends Fragment {
         return mView;
     }
 
+    @Override
+    public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", grou_id);
+        if (v.getId()==R.id.floatingActionButton){
+            Intent intent = new Intent(getActivity(),HomeActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }else if (v.getId()==R.id.floatingActionButton2){
+            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
+        }
+    }
 }

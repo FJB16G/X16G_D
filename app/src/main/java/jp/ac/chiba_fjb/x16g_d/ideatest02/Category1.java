@@ -107,8 +107,8 @@ public class Category1 extends Fragment implements View.OnClickListener {
                         adapter.notifyDataSetChanged();
                     }
                 });
-        getActivity().findViewById(R.id.toAllFragment).setOnClickListener(this);
-        getActivity().findViewById(R.id.toNextActivity).setOnClickListener(this);
+        getActivity().findViewById(R.id.toIdeaFragment).setOnClickListener(this);
+        getActivity().findViewById(R.id.toCreatedFragment).setOnClickListener(this);
         getActivity().findViewById(R.id.add).setOnClickListener(this);
         mIth.attachToRecyclerView(recyclerView);
         //カーソルを閉じる
@@ -156,18 +156,16 @@ public class Category1 extends Fragment implements View.OnClickListener {
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into category values('" + c + "','%s');",SQLite.STR(tuika)));
             }
-        }else if(view.getId()==R.id.toNextActivity){
+        }else if(view.getId()==R.id.toCreatedFragment){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            bundle.putString("id", grou_id);
             ((HomeActivity)getActivity()).changeFragment(CreatedFragment.class,bundle);
-        }else if(view.getId()==R.id.toAllFragment){
+        }else if(view.getId()==R.id.toIdeaFragment){
             for(int i = 0; i<datakey.size();i++){
                 db.exec("update category set category_name = '" + dataset.get(i) + "' where category_id = '" + datakey.get(i) + "';");
             }
-            bundle.putString("id", grou_id);
-            ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
+            ((HomeActivity)getActivity()).changeFragment(IdeaFragment.class,bundle);
         }
     }
 

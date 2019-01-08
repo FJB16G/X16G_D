@@ -18,29 +18,19 @@
             android:elevation="6dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/toAllFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:padding="5dp"
-                android:rotation="0"
-
-                android:tint="@android:color/holo_orange_dark"
-                app:srcCompat="?attr/actionModeCloseDrawable" />
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical|center"
+                android:paddingLeft="30dp"
                 android:text="アイデア(ステップ1)"
                 android:textColor="#000"
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/toCategoryActivity"
+                android:id="@+id/toCategoryFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"

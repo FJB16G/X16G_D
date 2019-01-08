@@ -1,6 +1,7 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ private String grou_id;
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         //グループの取得をしているところ
+        KeyboardUtils.hide(getActivity());
         grou_id = getArguments().getString("id");
         mView.findViewById(R.id.toIdea).setOnClickListener(this);
         mView.findViewById(R.id.toCategory).setOnClickListener(this);
@@ -51,7 +53,9 @@ private String grou_id;
         }else if(v.getId()==R.id.toCreated){
             ((HomeActivity)getActivity()).changeFragment(CreatedFragment.class,bundle);
         }else if(v.getId()==R.id.toHome){
-            ((HomeActivity)getActivity()).changeFragment(TitleFragment.class);
+            Intent intent = new Intent(getActivity(),HomeActivity.class);
+            startActivity(intent);
+            getActivity().finish();
         }
     }
 }

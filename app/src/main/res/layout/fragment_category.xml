@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/toAllFragment"
+                android:id="@+id/toIdeaFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -40,7 +40,7 @@
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/toNextActivity"
+                android:id="@+id/toCreatedFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
