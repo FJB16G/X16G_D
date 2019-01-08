@@ -56,55 +56,55 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-    //ここからチュートリアル
-
-    public static final int PREFERENCE_INIT = 0;
-    public static final int PREFERENCE_BOOTED = 1;
-
-    //データ保存
-    private void setState(int state) {
-        // SharedPreferences設定を保存
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        sp.edit().putInt("InitState", state).commit();
-    }
-
-    //データ読み出し
-    private int getState() {
-        // 読み込み
-        int state;
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        state = sp.getInt("InitState", PREFERENCE_INIT);
-        return state;
-    }
-
-
-    //ダイアログ表示
-    @Override
-    public void onResume(){
-        super.onResume();
-
-        AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
-
-        // ダイアログの設定
-        alertDialog.setTitle("FirstBoot");          //タイトル
-        alertDialog.setMessage("初回メッセージ");      //内容
-        alertDialog.setIcon(R.drawable.all_blue);   //アイコン設定
-
-        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            public void onClick(DialogInterface dialog, int which) {
-                //初回表示完了
-                setState(PREFERENCE_BOOTED);
-            }
-        });
-
-        // ダイアログの作成と表示
-        if(PREFERENCE_INIT == getState() ){
-            //初回起動時のみ表示する
-            alertDialog.create();
-            alertDialog.show();
-        }
-    }
+//    //ここからチュートリアル
+//
+//    public static final int PREFERENCE_INIT = 0;
+//    public static final int PREFERENCE_BOOTED = 1;
+//
+//    //データ保存
+//    private void setState(int state) {
+//        // SharedPreferences設定を保存
+//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//        sp.edit().putInt("InitState", state).commit();
+//    }
+//
+//    //データ読み出し
+//    private int getState() {
+//        // 読み込み
+//        int state;
+//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//        state = sp.getInt("InitState", PREFERENCE_INIT);
+//        return state;
+//    }
+//
+//
+//    //ダイアログ表示
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//
+//        AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
+//
+//        // ダイアログの設定
+//        alertDialog.setTitle("FirstBoot");          //タイトル
+//        alertDialog.setMessage("初回メッセージ");      //内容
+//        alertDialog.setIcon(R.drawable.all_blue);   //アイコン設定
+//
+//        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//
+//            public void onClick(DialogInterface dialog, int which) {
+//                //初回表示完了
+//                setState(PREFERENCE_BOOTED);
+//            }
+//        });
+//
+//        // ダイアログの作成と表示
+//        if(PREFERENCE_INIT == getState() ){
+//            //初回起動時のみ表示する
+//            alertDialog.create();
+//            alertDialog.show();
+//        }
+//    }
 
 
 
