@@ -1,6 +1,7 @@
 package jp.ac.chiba_fjb.x16g_d.ideatest02;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -94,9 +95,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.action_settings){
-            
-        }else if (item.getItemId()==R.id.action_settings2){
-
+            ((HomeActivity)getActivity()).changeFragment(HintFragment.class);
         }
         return super.onOptionsItemSelected(item);
     }

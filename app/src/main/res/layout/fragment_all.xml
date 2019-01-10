@@ -35,19 +35,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical|center"
+                android:paddingRight="30dp"
                 android:text="ステップ一覧"
                 android:textColor="#000"
                 android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/toShareFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:padding="5dp"
-                android:rotation="180"
-                android:tint="@color/ideaBule"
-                app:srcCompat="?attr/actionModeShareDrawable" />
         </LinearLayout>
 
         <LinearLayout

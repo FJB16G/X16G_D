@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-<<<<<<< HEAD
+
 //    //ここからチュートリアル
 //
 //    public static final int PREFERENCE_INIT = 0;
@@ -111,7 +111,7 @@ public class HomeActivity extends AppCompatActivity
 
 
 
-=======
+
     //ここからチュートリアル
 
     public static final int PREFERENCE_INIT = 0;
@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity
 
         // ダイアログの設定
         alertDialog.setTitle("FirstBoot");          //タイトル
-        alertDialog.setMessage("初回メッセージ");    //内容
+        alertDialog.setMessage("");    //内容
         alertDialog.setIcon(R.drawable.all_blue);   //アイコン設定
 
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -160,5 +160,4 @@ public class HomeActivity extends AppCompatActivity
             alertDialog.show();
         }
     }
->>>>>>> origin/offline
 }

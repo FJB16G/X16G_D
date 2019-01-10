@@ -9,9 +9,5 @@
         android:orderInCategory="100"
         android:title="使い方"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_settings2"
-        android:title="設定"
-        android:orderInCategory="200"
-        app:showAsAction="never" />
+
 </menu>
