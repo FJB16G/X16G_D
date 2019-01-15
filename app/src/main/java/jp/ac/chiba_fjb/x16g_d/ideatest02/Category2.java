@@ -63,7 +63,11 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         a = new ArrayList<>(lhm3.keySet());
 
         String b = a.get(0);
-        Log.w("dbg2222",b+"！！！！");
+        String c = "";
+        if (a.size()>=2){
+             c = a.get(1);
+        }
+        Log.w("dbg2222",b + "/" + c);
         db.exec("update idea_log set category_id = '" + b + "' where idea_id = '" + datakey.get(value2) + "';");
 
     }

@@ -24,7 +24,6 @@ public class HintFragment extends Fragment implements View.OnClickListener {
         mView = inflater.inflate(R.layout.fragment_hint, container, false);
         mView.findViewById(R.id.backbutton).setOnClickListener(this);
         final Bundle bundle = new Bundle();
-//        bundle.putString("id", grou_id);
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(this.getChildFragmentManager())
         {
             @Override

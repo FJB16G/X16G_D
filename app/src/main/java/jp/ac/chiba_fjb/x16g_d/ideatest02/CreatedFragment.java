@@ -3,6 +3,7 @@ package jp.ac.chiba_fjb.x16g_d.ideatest02;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,10 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
     private String name;
     private String grou_id;
     private TestDB db;
+
     public CreatedFragment() {
-        // Required empty public constructor
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
          mView.findViewById(R.id.commit).setOnClickListener(this);
          mView.findViewById(R.id.floatingActionButton).setOnClickListener(this);
          mView.findViewById(R.id.floatingActionButton2).setOnClickListener(this);
+         mView.findViewById(R.id.toRelation).setOnClickListener(this);
          Cursor res = db.query("select grou_idea_name from grou where grou_id = '" + grou_id + "'");
          while (res.moveToNext()) {
              //0列目を取り出し
@@ -60,6 +62,10 @@ public class CreatedFragment extends Fragment implements View.OnClickListener {
             getActivity().finish();
         }else if (v.getId() == R.id.floatingActionButton2){
             ((HomeActivity)getActivity()).changeFragment(AllFragment.class,bundle);
+        }else if(v.getId() == R.id.toRelation){
+            RelationFragment dialogFragment = new RelationFragment();
+            dialogFragment.setArguments(bundle);
+            dialogFragment.show(getChildFragmentManager(),"");
         }
     }
 }
