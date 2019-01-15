@@ -100,7 +100,7 @@ public class Category1 extends Fragment implements View.OnClickListener {
                         int fromPos = viewHolder.getAdapterPosition();
                         db.exec(String.format("delete from category where category_id = '%s';", SQLite.STR(datakey.get(fromPos))));
                         //カテゴリーが消されると、そこに入っていたアイデアは未分類にカテゴライズする
-                        db.exec("update idea_log set category_id = 'g000000000c0000000' where category_id = '" + datakey.get(fromPos) + "'");
+                        db.exec("update idea_log set category_id = '0000000000c0000000' where category_id = '" + datakey.get(fromPos) + "'");
                         datakey.remove(fromPos);
                         dataset.remove(fromPos);
                         adapter.notifyItemRemoved(fromPos);

@@ -35,6 +35,7 @@
         android:layout_weight="1.55"
         android:background="@android:color/holo_orange_light"
         android:text="決定"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:textIsSelectable="false" />
 
 </LinearLayout>

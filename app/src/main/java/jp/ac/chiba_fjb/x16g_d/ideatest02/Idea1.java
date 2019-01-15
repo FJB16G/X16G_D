@@ -147,7 +147,7 @@ public class Idea1 extends Fragment implements View.OnClickListener{
                 adapter.notifyDataSetChanged();
                 db.exec(String.format("insert into idea values('" + c + "','%s');",SQLite.STR(tuika)));
                 //アイデアは必ずどこかのカテゴリにカテゴライズされている
-                db.exec("insert into idea_log values('" + grou_id + "','user','g000000000c0000000','" + c + "');");
+                db.exec("insert into idea_log values('" + grou_id + "','user','0000000000c0000000','" + c + "');");
             }
         }if(view.getId()==R.id.toCategoryFragment){
             for(int i = 0; i<datakey.size();i++){

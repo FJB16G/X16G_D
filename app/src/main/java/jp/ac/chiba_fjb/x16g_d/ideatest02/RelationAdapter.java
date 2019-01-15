@@ -29,7 +29,6 @@ public class RelationAdapter extends RecyclerView.Adapter<RelationAdapter.ViewHo
             super(v);
             mIdea = (TextView) v.findViewById(R.id.idea);
             mCategory = (TextView) v.findViewById(R.id.category);
-
         }
     }
 
@@ -45,13 +44,6 @@ public class RelationAdapter extends RecyclerView.Adapter<RelationAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mIdea.setText(Idea.get(position));
         holder.mCategory.setText(Category.get(position));
-
-        if(position>=1){
-            if(Category.get(position).equals(Category.get(position-1))){
-                holder.mCategory.setText("");
-                holder.mCategory.setBackgroundColor(0);
-            }
-        }
     }
 
     @Override
