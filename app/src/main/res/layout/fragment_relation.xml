@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="5dp"
     tools:context=".RelationFragment">
@@ -10,11 +11,12 @@
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/category1"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -23,6 +25,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/idea1"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

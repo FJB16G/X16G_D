@@ -90,11 +90,10 @@ public class Category2Adapter extends RecyclerView.Adapter<Category2Adapter.View
 
             //Spinnerの設定
             ArrayAdapter adapter = new ArrayAdapter<Pair<String,String>>(v.getContext(), android.R.layout.simple_spinner_item);
-            Log.w("dbg2",dataArray.get(0));
-            Log.w("dbg2",dataArray2.get(0));
+
 
             if (cnt==2){
-                Log.w("dbg2",dataArray2.get(0)+"/2個目！！！！");
+
             }
 
             List<String> spArray = new ArrayList<>();

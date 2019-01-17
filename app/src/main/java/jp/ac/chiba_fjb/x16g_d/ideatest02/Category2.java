@@ -132,6 +132,8 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         dataset2 = new ArrayList<>(lhm2.values());
         datakey2 = new ArrayList<>(lhm2.keySet());
 
+
+
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
         Adapter = new Category2Adapter(dataset,dataset2,datakey2);
