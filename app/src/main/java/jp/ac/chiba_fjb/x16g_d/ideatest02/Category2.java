@@ -31,6 +31,7 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
     private List<String> datakey;
     private List<String> dataset2;
     private List<String> datakey2;
+    private List<String> Category;
     private List<String> a;
     private Activity Activity = null;
     private View mView;
@@ -100,45 +101,32 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         grou_id = getArguments().getString("id");
 
         //クエリーの発行
-        Cursor res = db.query("select idea_log.idea_id,idea.idea_name from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
-
-        //Cursor res = db.query("select * from idea");
-
-        //データがなくなるまで次の行へ
+        Cursor res = db.query("select idea_log.idea_id,idea.idea_name,idea_log.category_id from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
+        Category = new ArrayList<>();
         while(res.moveToNext())
         {
-            //0列目を取り出し
+            Category.add(res.getString(2));
             lhm.put(res.getString(0),res.getString(1));
         }
-        dataset = new ArrayList<>(lhm.values());
-        datakey = new ArrayList<>(lhm.keySet());
-
-        dataset2 = new ArrayList<>();
-        datakey2 = new ArrayList<>();
+        dataset = new ArrayList<>(lhm.values());//アイデアID
+        datakey = new ArrayList<>(lhm.keySet());//アイデア名
 
         //クエリーの発行
         Cursor res2 = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "'or category_id = '0000000000c0000000';");
-        //Cursor res2 = db.query("select * from category");
 
-        //データがなくなるまで次の行へ
         while(res2.moveToNext())
         {
-            //0列目を取り出し
             lhm2.put(res2.getString(0),res2.getString(1));
-
-           datakey2.add(res2.getString(0));
-           dataset2.add(res2.getString(1));
         }
-        dataset2 = new ArrayList<>(lhm2.values());
-        datakey2 = new ArrayList<>(lhm2.keySet());
-
-
+        dataset2 = new ArrayList<>(lhm2.values());//カテゴリ名
+        datakey2 = new ArrayList<>(lhm2.keySet());//カテゴリID
 
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
-        Adapter = new Category2Adapter(dataset,dataset2,datakey2);
+        Adapter = new Category2Adapter(dataset,dataset2,datakey2,Category);
         ((Category2Adapter) Adapter).setOnItemClickListener(this);
         recyclerView.setAdapter(Adapter);
+        Adapter.notifyDataSetChanged();
     }
     @Override
     public void onClick(View view ) {
