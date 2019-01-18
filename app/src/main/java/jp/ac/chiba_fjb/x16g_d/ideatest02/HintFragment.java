@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 public class HintFragment extends Fragment implements View.OnClickListener {
 
-    private CharSequence[] tabTitle = {"チュートリアル1", "チュートリアル2","チュートリアル3","チュートリアル4","チュートリアル5"};
+    private CharSequence[] tabTitle = {"ステップ1", "ステップ2","ステップ3","ステップ4","ステップ5"};
     private View mView;
     public HintFragment() {
     }
@@ -22,13 +22,11 @@ public class HintFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_hint, container, false);
-<<<<<<< HEAD
+
         mView.findViewById(R.id.floatingActionButton).setOnClickListener(this);
 
-=======
-        mView.findViewById(R.id.backbutton).setOnClickListener(this);
         final Bundle bundle = new Bundle();
->>>>>>> origin/paruaaa
+
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(this.getChildFragmentManager())
         {
             @Override
