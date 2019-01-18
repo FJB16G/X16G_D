@@ -53,7 +53,7 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         LinkedHashMap<String,String> lhm3 = new LinkedHashMap<>();
 
         TestDB db = new TestDB(getActivity());
-        Cursor res3 = db.query("select * from category where category_name = '"+value+"' and substr(category_id,1,10) = '" + grou_id + "'or category_id = 'g000000000c0000000';");
+        Cursor res3 = db.query("select * from category where category_name = '"+value+"' and substr(category_id,1,10) = '" + grou_id + "'or category_id = '0000000000c0000000';");
 
         while(res3.moveToNext())
         {
@@ -63,7 +63,10 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         a = new ArrayList<>(lhm3.keySet());
 
         String b = a.get(0);
-        Log.w("dbg2222",b+"！！！！");
+        if (a.size()>1){
+            b = a.get(1);
+        }
+        Log.w("dbg2222",b);
         db.exec("update idea_log set category_id = '" + b + "' where idea_id = '" + datakey.get(value2) + "';");
 
     }
@@ -114,7 +117,7 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         datakey2 = new ArrayList<>();
 
         //クエリーの発行
-        Cursor res2 = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "'or category_id = 'g000000000c0000000';");
+        Cursor res2 = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "'or category_id = '0000000000c0000000';");
         //Cursor res2 = db.query("select * from category");
 
         //データがなくなるまで次の行へ
@@ -128,6 +131,8 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         }
         dataset2 = new ArrayList<>(lhm2.values());
         datakey2 = new ArrayList<>(lhm2.keySet());
+
+
 
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
