@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Hint1 extends Fragment implements View.OnClickListener {
+public class Hint3 extends Fragment implements View.OnClickListener {
 
     private View mView;
     private RecyclerFragmentListener mFragmentListener = null;
@@ -26,7 +26,7 @@ public class Hint1 extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_hint1, container, false);
+        mView = inflater.inflate(R.layout.fragment_hint3, container, false);
         return mView;
     }
 
@@ -43,7 +43,7 @@ public class Hint1 extends Fragment implements View.OnClickListener {
 
 
 
-    public Hint1() {
+    public Hint3() {
         // Required empty public constructor
     }
 }

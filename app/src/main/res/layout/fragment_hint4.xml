@@ -6,8 +6,8 @@
     android:padding="20dp">
 
     <ImageView
-        android:id="@+id/hint2"
+        android:id="@+id/hint4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/hint2" />
+        app:srcCompat="@drawable/hint4" />
 </FrameLayout>
