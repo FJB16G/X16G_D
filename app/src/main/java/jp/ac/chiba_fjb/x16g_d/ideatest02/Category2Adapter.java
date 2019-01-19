@@ -41,12 +41,6 @@ public class Category2Adapter extends RecyclerView.Adapter<Category2Adapter.View
     private List<Integer> count = new ArrayList<>();
     private ArrayAdapter adapter;
 
-    Category2Adapter(List<String> dataset, List<String> dataset2) {
-        //MainActivityのArrayListを持ってきてる？
-        dataArray = dataset;
-        dataArray2 = dataset2;
-    }
-
     Category2Adapter(List<String> dataset, List<String> dataset2,List<String>datakey2,List<String>Category_Id) {
         //MainActivityのArrayListを持ってきてる？
         dataArray = dataset;//アイデア名
@@ -104,8 +98,8 @@ public class Category2Adapter extends RecyclerView.Adapter<Category2Adapter.View
         viewHolder.mButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.w("dbg2z","click！！！！"+position);
-                Log.w("dbg2z","click！！！！"+viewHolder.mTextView.getText());
+                Log.w("CategoryAdapter","position:"+position);
+                Log.w("CategoryAdapter","Idea_Name:"+viewHolder.mTextView.getText());
                 String item = (String)viewHolder.mSpinner.getSelectedItem();
                 mListener.onItemClick(item,position);
             }

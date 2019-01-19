@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class Category2 extends Fragment implements View.OnClickListener, Category2Adapter.OnItemClickListener {
+public class Category2 extends Fragment implements View.OnClickListener, Category2Adapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView.Adapter Adapter;
     private List<String> dataset;
     private List<String> datakey;
@@ -37,15 +39,10 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
     private View mView;
     private View sView;
     private String grou_id;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     // RecyclerViewとAdapter
     private RecyclerView recyclerView = null;
-
-    LinkedHashMap<String,String> lhm = new LinkedHashMap<>();
-    LinkedHashMap<String,String> lhm2 = new LinkedHashMap<>();
-    LinkedHashMap<String,String> lhm3 = new LinkedHashMap<>();
-
-    RecyclerView.ViewHolder viewHolder;
 
     @Override
     public void onItemClick(String value,int value2) {
@@ -67,14 +64,11 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         if (a.size()>1){
             b = a.get(1);
         }
-        Log.w("dbg2222",b);
+        Log.w("Category2","category_id:" + b);
         db.exec("update idea_log set category_id = '" + b + "' where idea_id = '" + datakey.get(value2) + "';");
 
     }
 
-    public interface RecyclerFragmentListener {
-        void onRecyclerEvent();
-    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -88,6 +82,11 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
         // RecyclerViewの参照を取得
         recyclerView = mView.findViewById(R.id.my_recycler_view2);
         // レイアウトマネージャを設定(ここで縦方向の標準リストであることを指定)
+        mSwipeRefreshLayout = (SwipeRefreshLayout)mView.findViewById(R.id.swipelayout);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.ideaBule,
+                R.color.ideaBule, R.color.ideaBule,
+                R.color.ideaBule);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(Activity));
         return mView;
 
@@ -97,29 +96,31 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        final TestDB db = new TestDB(getActivity());
+        TestDB db = new TestDB(getActivity());
         grou_id = getArguments().getString("id");
+        datakey2 = new ArrayList<>();//カテゴリID
+        dataset2 = new ArrayList<>();//カテゴリ名
+        datakey = new ArrayList<>();//アイデアID
+        dataset = new ArrayList<>();//アイデア名
+        Category = new ArrayList<>();
 
         //クエリーの発行
         Cursor res = db.query("select idea_log.idea_id,idea.idea_name,idea_log.category_id from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
-        Category = new ArrayList<>();
         while(res.moveToNext())
         {
+            datakey.add(res.getString(0));
+            dataset.add(res.getString(1));
             Category.add(res.getString(2));
-            lhm.put(res.getString(0),res.getString(1));
         }
-        dataset = new ArrayList<>(lhm.values());//アイデアID
-        datakey = new ArrayList<>(lhm.keySet());//アイデア名
 
         //クエリーの発行
         Cursor res2 = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "'or category_id = '0000000000c0000000';");
 
         while(res2.moveToNext())
         {
-            lhm2.put(res2.getString(0),res2.getString(1));
+            datakey2.add(res2.getString(0));
+            dataset2.add(res2.getString(1));
         }
-        dataset2 = new ArrayList<>(lhm2.values());//カテゴリ名
-        datakey2 = new ArrayList<>(lhm2.keySet());//カテゴリID
 
         // この辺りはListViewと同じ
         // 今回は特に何もしないけど、一応クリック判定を取れる様にする
@@ -133,5 +134,49 @@ public class Category2 extends Fragment implements View.OnClickListener, Categor
     }
 
     public Category2() {
+    }
+
+    @Override
+    public void onRefresh() {
+
+        TestDB db = new TestDB(getActivity());
+        grou_id = getArguments().getString("id");
+        datakey2 = new ArrayList<>();//カテゴリID
+        dataset2 = new ArrayList<>();//カテゴリ名
+        datakey = new ArrayList<>();//アイデアID
+        dataset = new ArrayList<>();//アイデア名
+        Category = new ArrayList<>();
+
+        //クエリーの発行
+        Cursor res = db.query("select idea_log.idea_id,idea.idea_name,idea_log.category_id from idea_log left outer join idea on idea_log.idea_id = idea.idea_id where idea_log.grou_id = '" + grou_id + "';");
+        while(res.moveToNext())
+        {
+            datakey.add(res.getString(0));
+            dataset.add(res.getString(1));
+            Category.add(res.getString(2));
+        }
+
+        //クエリーの発行
+        Cursor res2 = db.query("select category_id,category_name,substr(category_id,1,10) from category where substr(category_id,1,10) = '" + grou_id + "'or category_id = '0000000000c0000000';");
+
+        while(res2.moveToNext())
+        {
+            datakey2.add(res2.getString(0));
+            dataset2.add(res2.getString(1));
+        }
+
+        // この辺りはListViewと同じ
+        // 今回は特に何もしないけど、一応クリック判定を取れる様にする
+        Adapter = new Category2Adapter(dataset,dataset2,datakey2,Category);
+        ((Category2Adapter) Adapter).setOnItemClickListener(this);
+        recyclerView.setAdapter(Adapter);
+        Adapter.notifyDataSetChanged();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
     }
 }

@@ -75,9 +75,7 @@ public class HintFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         if (v.getId()==R.id.floatingActionButton){
-            Intent intent = new Intent(getActivity(),HomeActivity.class);
-            startActivity(intent);
-            getActivity().finish();
+            ((HomeActivity)getActivity()).changeFragment(TitleFragment.class);
         }
     }
 }
